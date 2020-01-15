@@ -1,13 +1,13 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
-import {Segment, Icon, Button} from "semantic-ui-react";
+import {Segment, Icon, Button, Image} from "semantic-ui-react";
 import './App.css';
 
 function App() {
 	return (
 		<div style={{height: "100%"}} className="App">
-			<Segment style={{height: "100%", marginTop: 0, border: 'none', boxShadow: 'none'}}>
-			<div id="page" style={{height: "100%", display: "flex"}}>
+			<Segment style={{height: "100%", margin: 0, padding: 0, border: 'none', boxShadow: 'none'}}>
+			<div id="page" style={{height: "100%", display: "flex", background: "#1d1d1d"}}>
 				<div id="left-panel" style={{height: "100%", background: "#181818", display: "flex", flex: 1, flexDirection: "column"}}>
 					<div style={{flex: 1, background: "black", display: "flex", flexDirection: "column", justifyContent: "space-evenly"}}>
 						<a href=""><Icon name="product hunt" size="huge" style={{color: "#00B5AD"}} /></a>
@@ -39,8 +39,16 @@ function App() {
 						<a href="https://www.instagram.com/dimitri.posadskiy/" target="_blank"><Icon name="instagram" size="large" style={{color: "#00B5AD"}} /></a>
 					</div>
 				</div>
-				<div id="hello" style={{flex: 14}}>
-					Hello! I'm Dimitri
+				<div id="hello" style={{flex: 7, background: "#1d1d1d", paddingLeft: "40px", alignSelf: "center"}}>
+					<div style={{textAlign: "left"}}>
+						<p style={{margin: 0, color: "white", fontSize: "40px", fontWeight: 900}}>Hi,</p>
+						<p style={{margin: 0, color: "white", fontSize: "40px", fontWeight: 900}}>I'm Posadskiy</p>
+						<p style={{margin: 0, color: "white", fontSize: "40px", fontWeight: 900}}>full stack developer</p>
+						<p style={{margin: 0, color: "white", fontSize: "20px", fontWeight: 700}}>Java / JavaScript / React / React Native / Big Data / Machine Learning</p>
+					</div>
+				</div>
+				<div id="photo" style={{alignSelf: "center", paddingRight: "40px"}}>
+					<Image src='/main_photo.png' size="large" />
 				</div>
 			</div>
 			</Segment>
