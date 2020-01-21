@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Grid, Image} from "semantic-ui-react";
-import {LeftPage, LeftRightPage} from "../component";
+import {LeftPage, LeftRightPage, RightPage} from "../component";
 
 class Projects extends Component {
 	render() {
@@ -12,8 +12,7 @@ class Projects extends Component {
 					<p>I spend time for OpenSource solutions and free-to-use projects helps me in life</p>
 					<p>I spend time for OpenSource solutions and free-to-use projects helps me in life</p>
 				</LeftPage>
-				<div style={{flex: 1, paddingLeft: "20px", paddingRight: "20px", display: "flex", flexDirection: "column", alignSelf: "center"}}>
-					<div >
+				<RightPage pageName="Projects">			
 						<Grid columns={3} padded>
 							<Grid.Column style={{padding: 0, margin: 0}}>
 								<Image src='https://www.projectsmart.co.uk/img/data-security.png' />
@@ -43,8 +42,7 @@ class Projects extends Component {
 								<Image src='https://i.pinimg.com/originals/d7/c2/1e/d7c21ed57581480afef65c8b08f8d1ae.jpg' />
 							</Grid.Column>
 						</Grid>
-					</div>
-				</div>
+				</RightPage>
 			</LeftRightPage>
 		)
 	}

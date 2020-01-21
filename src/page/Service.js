@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {LeftPage, LeftRightPage} from "../component";
+import {LeftPage, LeftRightPage, RightPage} from "../component";
 
 class Service extends Component {
 	render() {
@@ -8,6 +8,9 @@ class Service extends Component {
 				<LeftPage pageName="Service">
 					Service
 				</LeftPage>
+				<RightPage pageName="Service">
+					My services
+				</RightPage>
 			</LeftRightPage>
 		)
 	}
