@@ -40,7 +40,7 @@ function App() {
 					<div style={{flex: 2}}></div>
 					<div id="social" style={{flex: 2, display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center"}}>
 						<a href="https://www.linkedin.com/in/dimitri-posadskiy/" target="_blank"><Icon name="linkedin" size="large" style={{color: "#00B5AD"}} /></a>
-						<a href="https://github.com/DmitryPosadskiy" target="_blank"><Icon name="github" size="large" style={{color: "#00B5AD"}} /></a>
+						<a href="https://github.com/posadskiy" target="_blank"><Icon name="github" size="large" style={{color: "#00B5AD"}} /></a>
 						<a href="https://www.instagram.com/dimitri.posadskiy/" target="_blank"><Icon name="instagram" size="large" style={{color: "#00B5AD"}} /></a>
 					</div>
 				</div>
