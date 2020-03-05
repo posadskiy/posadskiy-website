@@ -15,8 +15,7 @@ function App() {
 			<div id="page" style={{height: "100%", display: "flex", background: "#1d1d1d"}}>
 				<div id="left-panel" style={{height: "100%", background: "#181818", display: "flex", flex: 1, flexDirection: "column"}}>
 					<div style={{flex: 1, background: "black", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center"}}>
-						<a href=""><Icon name="product hunt" size="huge" style={{color: "#00B5AD"}} /></a>
-						<p style={{color: "#00B5AD", fontSize: 17}}>posadskiy</p>
+						<Image src='/logo.png'/>
 					</div>
 					<div style={{flex: 2}}></div>
 					<div id="menu" style={{flex: 4, display: "flex", flexDirection: "column", justifyContent: "space-evenly"}}>
@@ -44,7 +43,7 @@ function App() {
 						<a href="https://www.instagram.com/dimitri.posadskiy/" target="_blank" rel="noopener noreferrer"><Icon name="instagram" size="large" style={{color: "#00B5AD"}} /></a>
 					</div>
 				</div>
-				<div style={{flex: 14, display: "flex"}}>
+				<div style={{flex: 19, display: "flex"}}>
 					<Routes />
 				</div>
 			</div>
