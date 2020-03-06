@@ -13,8 +13,8 @@ class Main extends Component {
 						<p style={{margin: 0, color: "white", fontSize: "20px", fontWeight: 700}}>Java / JavaScript / React / React Native / Big Data / Machine Learning</p>
 					</div>
 				</div>
-				<div id="photo" style={{alignSelf: "center", height: "100%", paddingRight: "40px", flex: 1, textAlign: "-webkit-right"}}>
-					<Image src='/main_photo.png' style={{height: "100%"}} />
+				<div id="photo" style={{alignSelf: "flex-end",  paddingRight: "40px", flex: 1}}>
+					<Image src='/main_photo.png' style={{height: "100%", width: "100%"}} />
 				</div>
 			</div>
 		)
