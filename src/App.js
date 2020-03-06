@@ -1,6 +1,6 @@
 import React from 'react';
 import 'semantic-ui-css/semantic.min.css';
-import {Router} from "react-router-dom";
+import {Link, Router} from "react-router-dom";
 import {Segment, Icon, Button, Image} from "semantic-ui-react";
 import './App.css';
 import Routes from "./Routes";
@@ -14,15 +14,11 @@ function App() {
 			<Segment style={{height: "100%", margin: 0, padding: 0, border: 'none', boxShadow: 'none'}}>
 			<div id="page" style={{height: "100%", display: "flex", background: "#1d1d1d"}}>
 				<div id="left-panel" style={{height: "100%", background: "#181818", display: "flex", flex: 1, flexDirection: "column"}}>
-					<div style={{flex: 1, background: "black", display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center"}}>
-						<Image src='/logo.png'/>
+					<div style={{flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-evenly", alignItems: "center"}}>
+						<Image as={Link} to={"/"} style={{maxWidth: "80%", maxHeight: "80%"}} src='/logo.png'/>
 					</div>
 					<div style={{flex: 2}}></div>
 					<div id="menu" style={{flex: 4, display: "flex", flexDirection: "column", justifyContent: "space-evenly"}}>
-						<Button id="nonShadow" onClick={() => History.push(Page.MAIN)} basic color="teal" style={{marginRight: 0}} animated='fade'>
-							<Button.Content visible><Icon name="home" size="big" /></Button.Content>
-							<Button.Content hidden>About</Button.Content>
-						</Button>
 						<Button id="nonShadow" onClick={() => History.push(Page.SERVICES)} basic color="teal" style={{marginRight: 0}} animated='fade'>
 							<Button.Content visible><Icon name="setting" size="big" /></Button.Content>
 							<Button.Content hidden>Service</Button.Content>
