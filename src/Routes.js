@@ -6,6 +6,7 @@ import {
 	Contact,
 	Project,
 	Service,
+	Page404,
 } from "./page";
 
 class Routes extends Component {
@@ -23,7 +24,7 @@ class Routes extends Component {
 				<Route exact path={SERVICES} component={Service}/>
 				<Route exact path={PROJECTS} component={Project}/>
 				<Route exact path={CONTACT} component={Contact}/>
-				<Route component={() => {}}/>
+				<Route component={Page404}/>
 			</Switch>
 		)
 	}
