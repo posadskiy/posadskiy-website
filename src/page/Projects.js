@@ -7,13 +7,13 @@ class Projects extends Component {
 		return (
 			<LeftRightPage>
 				<LeftPage pageName="Projects">
-					<p>I spend time for OpenSource solutions and free-to-use projects helps me in life</p>
-					<p>I spend time for OpenSource solutions and free-to-use projects helps me in life</p>
-					<p>I spend time for OpenSource solutions and free-to-use projects helps me in life</p>
-					<p>I spend time for OpenSource solutions and free-to-use projects helps me in life</p>
+					<p>My projects are divided into three types.</p>
+					<p>At <span style={{color: "#00B5AD"}}>day job</span>, I am based on business priorities. I select a solution and technology for a specific task.</p>
+					<p>I develop <span style={{color: "#00B5AD"}}>solutions that help</span> my family in free time. These solutions automate everyday processes, such as financial accounting or skills training. Here I try new technologies. The code and setup are always publicly available - anyone can use it for themselves.</p>
+					<p>My <span style={{color: "#00B5AD"}}>Open Source libraries</span> are self-contained components that appeared during development. If I find a way to make the library better, I’m releasing an update. Of course, I fix bugs found by users and provide support.</p>
 				</LeftPage>
-				<RightPage onFocus={() => console.log(111)} pageName="Projects">
-					<Grid columns={3} divided style={{margin: 0, background: "white"}}>
+				<RightPage pageName="Projects">
+					<Grid columns={2} divided style={{margin: 0, background: "lightgray"}}>
 						<Grid.Row>
 							<Grid.Column>
 								<ProjectItem
@@ -42,21 +42,21 @@ class Projects extends Component {
 								<ProjectItem
 									image="study-everyday-icon.png"
 									header="Study Everyday"
-									description=""
+									description="Try new technologies and move to modern full-stack guide"
 								/>
 							</Grid.Column>
 							<Grid.Column>
 								<ProjectItem
 									image="bank-work-icon.png"
 									header="Bank full-time work"
-									description=""
+									description="Desktop, mobile and server apps for the biggest russian bank"
 								/>
 							</Grid.Column>
 							<Grid.Column>
 								<ProjectItem
 									image="iot-work-icon.png"
 									header="IoT soft"
-									description=""
+									description="Server-side, AI and ML solutions for climate intelligence start up"
 								/>
 							</Grid.Column>
 						</Grid.Row>
@@ -65,7 +65,7 @@ class Projects extends Component {
 								<ProjectItem
 									image="swing-teacher-icon.png"
 									header="Swing Teacher"
-									description=""
+									description="Desktop app for learning Java Swing with tasks and check system"
 								/>
 							</Grid.Column>
 							<Grid.Column>
