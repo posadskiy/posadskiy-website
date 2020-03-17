@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
-import {Image} from "semantic-ui-react";
+import {Desktop, Mobile} from "../component";
+import * as DesktopPages from "./desktop";
+import * as MobilePages from "./mobile";
 
 class Main extends Component {
 	render() {
 		return (
-			<div style={{display: "flex", width: "100%"}}>
-				<div id="hello" style={{flex: 1, background: "#1d1d1d", paddingLeft: "40px", alignSelf: "center"}}>
-					<div style={{textAlign: "left"}}>
-						<p style={{margin: 0, color: "white", fontSize: "40px", fontWeight: 900}}>Hi,</p>
-						<p style={{margin: 0, color: "white", fontSize: "40px", fontWeight: 900}}>I'm Dimitri Posadskiy</p>
-						<p style={{margin: 0, color: "white", fontSize: "40px", fontWeight: 900}}>full stack developer</p>
-						<p style={{margin: 0, color: "white", fontSize: "20px", fontWeight: 700}}>Java / JavaScript / React / React Native / Big Data / Machine Learning</p>
-					</div>
-				</div>
-				<div id="photo" style={{alignSelf: "flex-end",  paddingRight: "40px", flex: 1}}>
-					<Image src='/main_photo.png' style={{height: "100%", width: "100%"}} />
-				</div>
+			<div>
+				<Mobile.Container>
+					<MobilePages.Main />
+				</Mobile.Container>
+				<Desktop.Container>
+					<DesktopPages.Main />
+				</Desktop.Container>
 			</div>
 		)
 	}

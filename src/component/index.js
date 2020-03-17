@@ -1,15 +1,11 @@
-import LeftRightPage from './LeftRightPage';
-import LeftPage from './LeftPage';
-import RightPage from './RightPage';
 import ProjectItem from "./ProjectItem";
-import DesktopHeader from "./DesktopHeader";
-import MobileHeader from "./MobileHeader";
+import Content from "./Content";
+import * as Desktop from "./desktop";
+import * as Mobile from "./mobile";
 
 export {
-	LeftRightPage,
-	LeftPage,
-	RightPage,
 	ProjectItem,
-	DesktopHeader,
-	MobileHeader,
+	Content,
+	Mobile,
+	Desktop,
 };

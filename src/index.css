@@ -22,3 +22,7 @@ code {
 #nonShadow {
     box-shadow: none !important;
 }
+
+.pushable:not(body) {
+    transform: none;
+}

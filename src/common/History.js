@@ -8,3 +8,7 @@ export const push = (url) => {
 export const goBack = () => {
 	history.goBack();
 };
+
+export const getLocation = () => {
+	return history.location;
+};

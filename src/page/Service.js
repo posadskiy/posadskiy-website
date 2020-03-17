@@ -1,17 +1,15 @@
 import React, {Component} from 'react';
-import {LeftPage, LeftRightPage, RightPage} from "../component";
+import {Desktop} from "../component";
+import * as DesktopPages from "./desktop";
 
 class Service extends Component {
 	render() {
 		return (
-			<LeftRightPage>
-				<LeftPage pageName="Service">
-					Service
-				</LeftPage>
-				<RightPage pageName="Service">
-					My services
-				</RightPage>
-			</LeftRightPage>
+			<div>
+				<Desktop.Container>
+					<DesktopPages.Service />
+				</Desktop.Container>
+			</div>
 		)
 	}
 }
