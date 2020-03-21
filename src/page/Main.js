@@ -6,7 +6,7 @@ import * as MobilePages from "./mobile";
 class Main extends Component {
 	render() {
 		return (
-			<div>
+			<div style={{width: "100%"}}>
 				<Mobile.Container>
 					<MobilePages.Main />
 				</Mobile.Container>
