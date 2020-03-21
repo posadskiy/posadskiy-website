@@ -32,21 +32,21 @@ class Header extends Component {
 					</div>
 					<div style={{flex: 2}}></div>
 					<div id="menu" style={{flex: 4, display: "flex", flexDirection: "column", justifyContent: "space-evenly"}}>
-						<Button id="nonShadow" onClick={() => History.push(Pages.SERVICES.url)} basic color="teal"
+						{/*<Button id="nonShadow" onClick={() => History.push(Page.SERVICES)} basic color="teal"
 						        style={{marginRight: 0, paddingLeft: 0}} animated='fade'>
 							<Button.Content visible><Icon name="setting" size="big" style={{marginRight: 0}}/></Button.Content>
 							<Button.Content hidden>Service</Button.Content>
-						</Button>
+						</Button>*/}
 						<Button id="nonShadow" onClick={() => History.push(Pages.PROJECTS.url)} basic color="teal"
 						        style={{marginRight: 0, paddingLeft: 0}} animated='fade'>
 							<Button.Content visible><Icon name="eye" size="big" style={{marginRight: 0}}/></Button.Content>
 							<Button.Content hidden>Projects</Button.Content>
 						</Button>
-						<Button id="nonShadow" onClick={() => History.push(Pages.CONTACT.url)} basic color="teal"
+						<Button id="nonShadow" onClick={() => History.push(Pages.CONTACT)} basic color="teal"
 						        style={{marginRight: 0, paddingLeft: 0}} animated='fade'>
 							<Button.Content visible><Icon name="mail" size="big" style={{marginRight: 0}}/></Button.Content>
 							<Button.Content hidden>Contact</Button.Content>
-						</Button>
+            </Button>
 					</div>
 					<div style={{flex: 2}}></div>
 					<div id="social" style={{
