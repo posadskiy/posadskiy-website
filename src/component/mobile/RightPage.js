@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Icon, Input} from "semantic-ui-react";
 
 class RightPage extends Component {
 	render() {
