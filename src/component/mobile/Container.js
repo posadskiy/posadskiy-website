@@ -8,7 +8,7 @@ class Container extends Component {
 			<Responsive
 				as={Sidebar.Pushable}
 				getWidth={() => Utils.getWidth(Responsive.onlyMobile.minWidth)}
-				maxWidth={Responsive.onlyMobile.maxWidth}
+				maxWidth={Responsive.onlyTablet.maxWidth}
 				style={{position: "absolute", width: "100%", overflowX: "auto"}}
 			>
 				{this.props.children}
