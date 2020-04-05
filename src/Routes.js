@@ -1,13 +1,7 @@
 import React, {Component} from 'react';
 import {Switch, Route} from "react-router-dom";
-import {Page} from './common';
-import {
-	Main,
-	Contact,
-	Project,
-	Service,
-	Page404,
-} from "./page";
+import {Pages} from './common';
+import {Page} from './page'
 
 class Routes extends Component {
 	render() {
@@ -16,15 +10,16 @@ class Routes extends Component {
 			SERVICES,
 			PROJECTS,
 			CONTACT,
-		} = Page;
+			PAGE404,
+		} = Pages;
 
 		return (
 			<Switch>
-				<Route path={MAIN} exact component={Main}/>
-				<Route exact path={SERVICES} component={Service}/>
-				<Route exact path={PROJECTS} component={Project}/>
-				<Route exact path={CONTACT} component={Contact}/>
-				<Route component={Page404}/>
+				<Route exact path={MAIN.url} component={() => <Page pageName={MAIN.component} />}/>
+				<Route exact path={SERVICES.url} component={() => <Page pageName={SERVICES.component} />}/>
+				<Route exact path={PROJECTS.url} component={() => <Page pageName={PROJECTS.component} />}/>
+				<Route exact path={CONTACT.url} component={() => <Page pageName={CONTACT.component} />}/>
+				<Route component={() => <Page pageName={PAGE404.component}/>}/>
 			</Switch>
 		)
 	}

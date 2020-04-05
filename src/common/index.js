@@ -1,9 +1,9 @@
-import Page from './Page';
+import Pages from './Pages';
 import * as History from './History';
 import * as Utils from './Utils';
 
 export {
-	Page,
+	Pages,
 	History,
 	Utils,
 };

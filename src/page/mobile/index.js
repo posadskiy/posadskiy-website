@@ -1,7 +1,8 @@
 import Main from './Main';
 import Project from './Projects';
+import {Pages} from "../../common";
 
-export {
-	Main,
-	Project,
+export const mobilePages = {
+	[Pages.MAIN.component]: Main,
+	[Pages.PROJECTS.component]: Project,
 };

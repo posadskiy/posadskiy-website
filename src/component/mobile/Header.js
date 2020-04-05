@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Container, Icon, Menu, Segment, Sidebar} from "semantic-ui-react";
 import {Container as MobileContainer} from "./index";
 import {Link} from "react-router-dom";
-import {History} from '../../common';
+import {History, Pages} from '../../common';
 
 class Header extends Component {
 	state = {};
@@ -10,10 +10,6 @@ class Header extends Component {
 	handleSidebarHide = () => this.setState({sidebarOpened: false});
 
 	handleToggle = () => this.setState({sidebarOpened: true});
-	
-	onMenuItemClick = (tab) => {
-		this.handleSidebarHide();
-	};
 
 	render() {
 		const {children} = this.props;
@@ -31,8 +27,8 @@ class Header extends Component {
 					size="massive"
 					style={{display: "flex", flexDirection: "column-reverse", width: "50%"}}
 				>
-					<Menu.Item as={Link} to="/" active={History.getLocation()?.pathname === "/"} onClick={this.handleSidebarHide}>Home</Menu.Item>
-					<Menu.Item style={{marginTop: "80px"}} as={Link} to="/projects" active={History.getLocation()?.pathname === "/projects"} onClick={this.handleSidebarHide}>Projects</Menu.Item>
+					<Menu.Item as={Link} to={Pages.MAIN.url} active={History.getLocation()?.pathname === Pages.MAIN.url} onClick={this.handleSidebarHide}>Home</Menu.Item>
+					<Menu.Item style={{marginTop: "80px"}} as={Link} to={Pages.PROJECTS.url} active={History.getLocation()?.pathname === Pages.PROJECTS.url} onClick={this.handleSidebarHide}>Projects</Menu.Item>
 					<Menu.Item as='a' href="https://www.linkedin.com/in/dimitri-posadskiy/" onClick={this.handleSidebarHide}>
 						<Icon name="github" style={{color: "#00B5AD"}}/>GitHub
 					</Menu.Item>
