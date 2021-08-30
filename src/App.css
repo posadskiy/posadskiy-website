@@ -1,3 +1,7 @@
 .pushable:not(body) {
     transform: none;
 }
+
+div {
+    width: 100%;
+}

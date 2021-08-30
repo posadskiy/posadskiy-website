@@ -9,7 +9,7 @@ class RightPage extends Component {
 
 		const pageUrl = 'https://posadskiy.com/' + pageName;
 		return (
-			<div style={{flex: 1, paddingLeft: "20px", paddingRight: "40px", display: "flex", flexDirection: "column", alignSelf: "center"}}>
+			<div style={{flex: 1, height: "100%", paddingLeft: "20px", paddingRight: "40px", display: "flex", flexDirection: "column", alignSelf: "center"}}>
 				<div style={{flex: 2, display: "flex", flexDirection: "column", justifyContent: "flex-end"}}>
 					<div style={{display: "flex", flexDirection: "row"}}>
 						<div style={{flex: 1, display: "flex", flexDirection: "row", background: "white", paddingTop: "5px", paddingBottom: "5px", borderTopLeftRadius: "7px", borderTopRightRadius: "7px"}}>
@@ -25,10 +25,10 @@ class RightPage extends Component {
 						<Input style={{flex: 15}} icon='info circle' iconPosition='left' value={pageUrl} />
 					</div>
 				</div>
-				<div style={{flex: 5}}>
+				<div style={{flex: 4, display: "flex"}}>
 					{this.props.children}
 				</div>
-				<div style={{flex: 1}}>
+				<div style={{flex: 2}}>
 					
 				</div>
 			</div>
