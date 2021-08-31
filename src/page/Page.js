@@ -23,6 +23,10 @@ class Page extends Component {
 		const {
 			pageName,
 		} = this.props;
+		
+		const setLoading = (value) => {
+		  this.setState({isLoading: value});
+    }
 
 		const MobilePage = mobilePages[pageName];
 		const DesktopPage = desktopPages[pageName];
@@ -42,7 +46,9 @@ class Page extends Component {
 				{
 					DesktopPage && (
 						<Desktop.Container>
-							<DesktopPage />
+							<DesktopPage
+                setLoading={setLoading}
+              />
 						</Desktop.Container>
 					)
 				}
