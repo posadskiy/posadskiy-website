@@ -1,4 +1,4 @@
-const Link = {
+const SocialLink = {
   Telegram: "http://t.me/dimitri_posadskiy",
   Linkedin: "https://linkedin.com/in/dimitri-posadskiy/",
   GitHub: "https://github.com/posadskiy",
@@ -6,4 +6,6 @@ const Link = {
   Instagram: "https://instagram.com/dimitri.posadskiy",
 }
 
-export default Link;
+export {
+  SocialLink,
+};

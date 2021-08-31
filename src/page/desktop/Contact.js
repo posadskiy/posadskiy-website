@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Desktop} from "../../component";
 import {Button, TextArea, Input, Icon, List} from "semantic-ui-react";
 import emailjs from 'emailjs-com';
-import Link from '../../common/Link';
+import {SocialLink} from '../../common/Link';
 import {AlertMessage} from "../../component/desktop";
 
 class Contact extends Component {
@@ -132,10 +132,10 @@ class Contact extends Component {
 				<Desktop.LeftPage pageName="Contact">
           <div>You can send me message via</div>
           <List divided inverted selection>
-            <List.Item as='a' href={Link.Telegram}><Icon name="telegram" />Telegram</List.Item>
-            <List.Item as='a' href={Link.Messenger}><Icon name="facebook messenger" />Messenger</List.Item>
-            <List.Item as='a' href={Link.Linkedin}><Icon name="linkedin" />Linkedin</List.Item>
-            <List.Item as='a' href={Link.Instagram}><Icon name="instagram" />Instagram</List.Item>
+            <List.Item as='a' href={SocialLink.Telegram}><Icon name="telegram" />Telegram</List.Item>
+            <List.Item as='a' href={SocialLink.Messenger}><Icon name="facebook messenger" />Messenger</List.Item>
+            <List.Item as='a' href={SocialLink.Linkedin}><Icon name="linkedin" />Linkedin</List.Item>
+            <List.Item as='a' href={SocialLink.Instagram}><Icon name="instagram" />Instagram</List.Item>
           </List>
           <div>or the inline form on the right</div>
 				</Desktop.LeftPage>

@@ -3,6 +3,7 @@ import {Button, Icon, Image} from "semantic-ui-react";
 import {Link} from "react-router-dom";
 import {History, Pages} from "../../common";
 import {Container} from "./index";
+import {SocialLink} from './../../common/Link'
 
 class Header extends Component {
 	render() {
@@ -49,13 +50,24 @@ class Header extends Component {
 						justifyContent: "space-evenly",
 						alignItems: "center"
 					}}>
-						<a href="https://www.linkedin.com/in/dimitri-posadskiy/" target="_blank" rel="noopener noreferrer"><Icon
-							name="linkedin" size="large" style={{color: "#00B5AD"}}/></a>
-						<a href="https://github.com/posadskiy" target="_blank" rel="noopener noreferrer"><Icon name="github"
-						                                                                                       size="large"
-						                                                                                       style={{color: "#00B5AD"}}/></a>
-						<a href="https://www.instagram.com/dimitri.posadskiy/" target="_blank" rel="noopener noreferrer"><Icon
-							name="instagram" size="large" style={{color: "#00B5AD"}}/></a>
+						<a href={SocialLink.Linkedin} target="_blank" rel="noopener noreferrer">
+              <Icon name="linkedin"
+                    size="large" 
+                    style={{color: "#00B5AD"}}
+              />
+						</a>
+						<a href={SocialLink.GitHub} target="_blank" rel="noopener noreferrer">
+              <Icon name="github"
+                    size="large"
+                    style={{color: "#00B5AD"}}
+              />
+						</a>
+						<a href={SocialLink.Instagram} target="_blank" rel="noopener noreferrer">
+              <Icon name="instagram" 
+                    size="large" 
+                    style={{color: "#00B5AD"}}
+              />
+						</a>
 					</div>
 				</div>
 				{children}
