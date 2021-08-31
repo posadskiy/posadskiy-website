@@ -42,7 +42,7 @@ class Header extends Component {
 							<Button.Content visible><Icon name="eye" size="big" style={{marginRight: 0}}/></Button.Content>
 							<Button.Content hidden>Projects</Button.Content>
 						</Button>
-						<Button id="nonShadow" onClick={() => History.push(Pages.CONTACT)} basic color="teal"
+					  <Button id="nonShadow" onClick={() => History.push(Pages.CONTACT.url)} basic color="teal"
 						        style={{marginRight: 0, paddingLeft: 0}} animated='fade'>
 							<Button.Content visible><Icon name="mail" size="big" style={{marginRight: 0}}/></Button.Content>
 							<Button.Content hidden>Contact</Button.Content>
