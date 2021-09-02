@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import {History, Pages} from "../../common";
 import {Container} from "./index";
 import {SocialLink} from './../../common/Link'
+import {Logo} from "../../common/Images";
 
 class Header extends Component {
 	render() {
@@ -22,7 +23,12 @@ class Header extends Component {
 						justifyContent: "space-evenly",
 						alignItems: "center"
 					}}>
-						<Image as={Link} to={"/"} style={{maxWidth: "80%", maxHeight: "80%"}} src='/logo.png'/>
+						<Image 
+              as={Link} 
+              to={"/"} 
+              style={{maxWidth: "80%", maxHeight: "80%"}} 
+              src={Logo.BlackCircle.get(Logo.BlackCircle.size128)}
+            />
 					</div>
 					<div style={{flex: 2}}></div>
 					<div id="menu" style={{flex: 4, display: "flex", flexDirection: "column", justifyContent: "space-evenly"}}>

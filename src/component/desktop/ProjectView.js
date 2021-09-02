@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import {Modal, Button} from "semantic-ui-react";
+import {Modal, Button, Image} from "semantic-ui-react";
+import {getProjectIconLink} from "../../common/Projects";
 
-class AlertMessage extends Component {
+class ProjectView extends Component {
   
   render() {
     const {
       isOpen,
       close,
+      image,
       header,
       description,
       confirmText,
@@ -16,12 +18,12 @@ class AlertMessage extends Component {
     return (
       <Modal
         open={isOpen}
-        size="tiny"
         onClose={close}
         trigger={button}
       >
         <Modal.Header>{header}</Modal.Header>
-        <Modal.Content>
+        <Modal.Content image>
+          <Image size='medium' src={getProjectIconLink(image)} wrapped />
           <Modal.Description>
             {description}
           </Modal.Description>
@@ -34,4 +36,4 @@ class AlertMessage extends Component {
   }
 }
 
-export default AlertMessage;
+export default ProjectView;
