@@ -1,87 +1,71 @@
 import React, {Component} from 'react';
 import {Grid} from "semantic-ui-react";
-import {Mobile} from "../../component";
+import {Mobile,Desktop} from "../../component";
+import {Project} from "../../common/Projects";
 
 class Projects extends Component {
 	render() {
 		return (
 			<Mobile.LeftRightPage>
 				<Mobile.LeftPage pageName="Projects" paddingBottom="20px">
-					<p>My projects are divided into three types.</p>
-					<p>At <span style={{color: "#00B5AD"}}>day job</span>, I am based on business priorities. I select a solution
-						and technology for a specific task.</p>
-					<p>I develop <span style={{color: "#00B5AD"}}>solutions that help</span> my family in free time. These
-						solutions automate everyday processes, such as financial accounting or skills training. Here I try new
-						technologies. The code and setup are always publicly available - anyone can use it for themselves.</p>
-					<p>My <span style={{color: "#00B5AD"}}>Open Source libraries</span> are self-contained components that
-						appeared during development. If I find a way to make the library better, I’m releasing an update. Of course,
-						I fix bugs found by users and provide support.</p>
+					<p>I'm moving forward on several fronts.</p>
+					<p>At <span style={{color: "#00B5AD"}}>day job</span>, I base on business priorities. My motto is that
+            technology should be selected for a specific task, but not using one technology for all tasks.</p>
+					<p>In my free time, I develop <span style={{color: "#00B5AD"}}>solutions that help my family</span>. These
+            solutions as applications, sites, or even
+            scripts automate everyday processes, such as financial accounting, budget planning, or skills training.
+            During this activity, I operate with unknown technologies, trying something new. The code and setup are
+            always publicly available - anyone can use it for themselves.</p>
+					<p>My <span style={{color: "#00B5AD"}}>Open Source libraries</span> are self-contained components that appear
+            during development, prepares for publishing, maintains, and improves during their life cycle.</p>
 				</Mobile.LeftPage>
 				<Mobile.RightPage pageName="Projects">
 					<Grid divided style={{margin: 0, background: "lightgray", height: "100%", width: "100%"}}>
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="cost-accounting-icon.png"
-								header="Cost Accounting"
-								description="Telegram Bot, that accepts purchase data, stores it and displays processed"
+							<Desktop.ProjectItem
+                project={Project.CostAccounting}
 							/>
 						</Grid.Column>
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="currency-converter-icon.png"
-								header="Currency Converter"
-								description="Currency converter library for Java applications"
+							<Desktop.ProjectItem
+                project={Project.CurrencyConverter}
 							/>
 						</Grid.Column>
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="skill-repeater-icon.png"
-								header="Skill Repeater"
-								description="Train your skills and do not forget to repeat them"
+							<Desktop.ProjectItem
+                project={Project.SkillRepeater}
 							/>
 						</Grid.Column>
 
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="study-everyday-icon.png"
-								header="Study Everyday"
-								description="Try new technologies and move to modern full-stack guide"
+							<Desktop.ProjectItem
+                project={Project.StudyEveryday}
 							/>
 						</Grid.Column>
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="bank-work-icon.png"
-								header="Bank full-time work"
-								description="Container, mobile and server apps for the biggest russian bank"
+							<Desktop.ProjectItem
+                project={Project.BankWork}
 							/>
 						</Grid.Column>
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="iot-work-icon.png"
-								header="IoT soft"
-								description="Server-side, AI and ML solutions for climate intelligence start up"
+							<Desktop.ProjectItem
+                project={Project.IoTWork}
 							/>
 						</Grid.Column>
 
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="swing-teacher-icon.png"
-								header="Swing Teacher"
-								description="Container app for learning Java Swing with tasks and check system"
+							<Desktop.ProjectItem
+                project={Project.SwingTeacher}
 							/>
 						</Grid.Column>
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="schedule-editor-icon.png"
-								header="Schedule Editor"
-								description="Container app for editing university lessons schedule"
+							<Desktop.ProjectItem
+                project={Project.ScheduleEditor}
 							/>
 						</Grid.Column>
 						<Grid.Column computer={5} tablet={5} mobile={8} style={{padding: "5px"}}>
-							<Mobile.ProjectItem
-								image="cost-accounting-icon.png"
-								header="Cost Accounting"
-								description="Container App accepts purchase data, stores it and displays processed"
+							<Desktop.ProjectItem
+                project={Project.RestSecurity}
 							/>
 						</Grid.Column>
 					</Grid>
