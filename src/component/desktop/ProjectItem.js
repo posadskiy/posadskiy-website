@@ -22,7 +22,7 @@ class ProjectItem extends Component {
 				<Reveal.Content hidden style={{alignSelf: "center"}}>
 					<p style={{fontWeight: 900, margin: 0, textAlign: "center"}}>{header}</p>
 					<p style={{textAlign: "center", marginBottom: "5px"}}>{description}</p>
-					<Button basic color="teal" onClick={() => onClick(project)} style={{width: "100%"}}>Learn more</Button>
+          {!!onClick && (<Button basic color="teal" onClick={() => onClick(project)} style={{width: "100%"}}>Learn more</Button>)}
 				</Reveal.Content>
 			</Reveal>
 		)
