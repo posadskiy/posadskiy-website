@@ -2,47 +2,47 @@ const Project = {
   CostAccounting: {
     name: "Cost Accounting",
     icon: "cost-accounting-icon.png",
-    description: "Telegram Bot, that accepts purchase data, stores it and displays processed",
+    description: "Telegram Bot receives purchases, incomes, and presentations statistics",
   },
   CurrencyConverter: {
     name: "Currency Converter",
     icon: "currency-converter-icon.png",
-    description: "Currency converter library for Java applications",
+    description: "Java library provides the current exchange rate for 165+ currencies",
   },
   SkillRepeater: {
     name: "Skill Repeater",
     icon: "skill-repeater-icon.png",
-    description: "Train your skills and do not forget to repeat them",
+    description: "Mobile device-based system suggests repeating skill in gamification technique",
   },
   StudyEveryday: {
     name: "Study Everyday",
     icon: "study-everyday-icon.png",
-    description: "Try new technologies and move to modern full-stack guide",
+    description: "Studying new knowledge and refreshing already discovered",
   },
   BankWork: {
     name: "Bank work",
     icon: "bank-work-icon.png",
-    description: "Container, mobile and server apps for the biggest russian bank",
+    description: "Complete mobile and desktop working space for bank client managers",
   },
   IoTWork: {
     name: "IoT work",
     icon: "iot-work-icon.png",
-    description: "Container, mobile and server apps for the biggest russian bank",
+    description: "Creating the next level of the intelligent climate system",
   },
   SwingTeacher: {
     name: "Swing Teacher",
     icon: "swing-teacher-icon.png",
-    description: "Container app for learning Java Swing with tasks and check system",
+    description: "IDE with lessons to become from zero to hero in Java Swing",
   },
   ScheduleEditor: {
     name: "Schedule Editor",
     icon: "schedule-editor-icon.png",
-    description: "Container app for editing university lessons schedule",
+    description: "Desktop application for managing lesson schedule for University",
   },
   RestSecurity: {
     name: "Rest Security",
     icon: "rest-security-icon.png",
-    description: "Open Source library for Java App safety",
+    description: "Open Source library provides complete abilities for java application protection",
   },
 }
 
