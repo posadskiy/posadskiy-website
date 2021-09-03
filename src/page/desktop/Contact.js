@@ -141,6 +141,9 @@ class Contact extends Component {
 				</Desktop.LeftPage>
 				<Desktop.RightPage pageName="Contact">
 					<div style={{height: "100%", display: "flex", flexDirection: "column", background: "#dddddd"}}>
+            <div style={{textAlign: "center", padding: "20px 0"}}>
+              <div style={{height: "100%", width: "100%", fontFamily: "Fira Mono", fontSize: "24px", color: "#777"}}>Feedback form</div>
+            </div>
 						<div style={{textAlign: "center", padding: "3px 10px", height: "100%"}}>
 							<TextArea style={{height: "100%", width: "100%", fontFamily: "Fira Mono", fontSize: "24px"}}
                         value={message}
