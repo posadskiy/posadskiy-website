@@ -222,7 +222,7 @@ export const ProjectsPage = () => {
                     )}
                     {project.tags && project.tags.length > 0 && (
                       <div className="flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
+                    {project.tags.map((tag: string) => (
                           <span
                             key={`${project.name}-${tag}`}
                             className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-slate-200 border border-white/10"
@@ -234,7 +234,7 @@ export const ProjectsPage = () => {
                     )}
                     {project.stack && project.stack.length > 0 && (
                       <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                        {project.stack.slice(0, 4).map((tech) => (
+                      {project.stack.slice(0, 4).map((tech: string) => (
                           <span
                             key={`${project.name}-${tech}`}
                             className="px-2 py-1 rounded-md bg-slate-900/40 border border-white/5"
@@ -314,7 +314,7 @@ export const ProjectsPage = () => {
                   )}
                   {selectedProject.tags && selectedProject.tags.length > 0 && (
                     <div className="flex flex-wrap gap-2 pt-1">
-                      {selectedProject.tags.map((tag) => (
+                      {selectedProject.tags.map((tag: string) => (
                         <span
                           key={`${selectedProject.name}-modal-${tag}`}
                           className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-slate-100 border border-white/10"
@@ -326,7 +326,7 @@ export const ProjectsPage = () => {
                   )}
                   {selectedProject.stack && selectedProject.stack.length > 0 && (
                     <div className="flex flex-wrap gap-2 pt-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                      {selectedProject.stack.map((tech) => (
+                      {selectedProject.stack.map((tech: string) => (
                         <span
                           key={`${selectedProject.name}-stack-${tech}`}
                           className="px-2 py-1 rounded-md bg-slate-900/50 border border-white/5"

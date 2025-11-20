@@ -1,4 +1,4 @@
-import { ProjectData } from '@/types';
+import { Project, ProjectData } from '@/types';
 
 export const PROJECTS: ProjectData = {
   CostAccounting: {
@@ -157,5 +157,5 @@ export const PROJECTS: ProjectData = {
   },
 };
 
-export const getAllProjects = () => Object.values(PROJECTS);
+export const getAllProjects = (): Project[] => Object.values(PROJECTS);
 
