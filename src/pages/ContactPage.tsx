@@ -1,6 +1,5 @@
 import { useState, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
 import { Textarea } from '@/components/Textarea';
@@ -10,6 +9,10 @@ import { ContactFormData, AlertState } from '@/types';
 interface ContactPageProps {
   setLoading: (loading: boolean) => void;
 }
+
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
+const WEB3FORMS_ACCESS_KEY =
+  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'ac01c9ec-65b2-492d-aad5-45939470ba8f';
 
 const socialIcons = [
   {
@@ -99,21 +102,26 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
 
     setLoading(true);
 
-    const params = {
-      from_name: 'User',
-      name: formData.name,
-      email: formData.email,
-      message: formData.message,
-    };
-
     try {
-      await emailjs.send(
-        'service_1zfv4cb',
-        'template_5fppk3g',
-        params,
-        'user_76k57KfKEtGkRIGd7NJqc'
-      );
+      const submission = new FormData();
+      submission.append('access_key', WEB3FORMS_ACCESS_KEY);
+      submission.append('subject', `New message from ${formData.name}`);
+      submission.append('from_name', formData.name);
+      submission.append('email', formData.email);
+      submission.append('message', formData.message);
+
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        body: submission,
+      });
+
+      const data = await response.json();
       setLoading(false);
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || 'Web3Forms submission failed');
+      }
+
       setFormData({ name: '', email: '', message: '' });
       setAlert({
         open: true,
@@ -126,7 +134,7 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
       setAlert({
         open: true,
         header: 'Something went wrong',
-        description: 'Please try again later',
+        description: error instanceof Error ? error.message : 'Please try again later',
         confirmText: 'OK',
       });
     }
@@ -212,6 +220,7 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
               <Input
                 label="Name"
                 type="text"
+                name="name"
                 placeholder="Your name"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -220,6 +229,7 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
               <Input
                 label="Email"
                 type="email"
+                name="email"
                 placeholder="your.email@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -227,6 +237,7 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
 
               <Textarea
                 label="Message"
+                name="message"
                 placeholder="Tell me about your project..."
                 rows={6}
                 value={formData.message}

@@ -1,8 +1,31 @@
 // Project types
+export type ProjectCategory = 'Fintech' | 'Security' | 'Learning' | 'Enterprise' | 'IoT';
+export type ProjectStatus =
+  | 'In production'
+  | 'Maintained'
+  | 'R&D'
+  | 'Community'
+  | 'Operational'
+  | 'Beta'
+  | 'Active'
+  | 'Open Source'
+  | 'Shipped';
+
 export interface Project {
   name: string;
-  icon: string;
   description: string;
+  categories: ProjectCategory[];
+  status: ProjectStatus;
+  summary?: string;
+  highlight?: string;
+  tags?: string[];
+  stack?: string[];
+  role?: string;
+  featured?: boolean;
+  weight?: number;
+  publishedAt?: string;
+  slug?: string;
+  body?: string;
 }
 
 export interface ProjectData {

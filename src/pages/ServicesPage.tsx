@@ -3,7 +3,7 @@ import { Card } from '@/components/Card';
 
 const services = [
   {
-    title: 'Full-Stack Development',
+    title: 'Principal Backend Developer',
     description:
       'Building scalable web applications with modern technologies. Expert in Java Spring Boot, React, and cloud-native architectures.',
     icon: (
@@ -13,21 +13,6 @@ const services = [
           strokeLinejoin="round"
           strokeWidth={2}
           d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: 'Mobile Development',
-    description:
-      'Creating cross-platform mobile applications using React Native. Seamless user experiences on iOS and Android.',
-    icon: (
-      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
         />
       </svg>
     ),
@@ -48,9 +33,9 @@ const services = [
     ),
   },
   {
-    title: 'Big Data & ML',
+    title: 'AI Development',
     description:
-      'Processing and analyzing large datasets. Machine learning solutions for predictive analytics and intelligent systems.',
+      'Designing AI-first solutions: generative AI integrations, intelligent agents, and data pipelines that keep models reliable in production.',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path

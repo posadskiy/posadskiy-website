@@ -16,7 +16,7 @@ function App() {
     <NavigationProvider>
       <Layout loading={loading}>
         <Routes>
-          <Route path={PAGES.MAIN.url} element={<MainPage />} />
+          <Route path={PAGES.MAIN.url} element={<MainPage setLoading={setLoading} />} />
           <Route path={PAGES.PROJECTS.url} element={<ProjectsPage />} />
           <Route path={PAGES.SERVICES.url} element={<ServicesPage />} />
           <Route path={PAGES.CONTACT.url} element={<ContactPage setLoading={setLoading} />} />
