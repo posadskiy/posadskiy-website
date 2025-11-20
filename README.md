@@ -1,68 +1,154 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dimitri Posadskiy - Portfolio Website
 
-## Available Scripts
+A modern, responsive portfolio website showcasing Principal Java Developer expertise, built with cutting-edge 2025 technologies.
 
-In the project directory, you can run:
+## 🚀 Tech Stack
 
-### `yarn start`
+- **Framework**: React 19 with TypeScript 5.6
+- **Build Tool**: Vite 6.0 (Lightning-fast development and builds)
+- **Styling**: Tailwind CSS 4.0 (Modern utility-first CSS)
+- **Animations**: Framer Motion 11.5 (Smooth micro-interactions)
+- **Routing**: React Router 6.28
+- **Email**: EmailJS for contact form
+- **Code Quality**: ESLint + Prettier with TypeScript support
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## ✨ Features
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- **Modern 2025 Design**: Dark theme with violet/purple gradient accents
+- **Glassmorphism Effects**: Subtle backdrop blur and transparency
+- **Smooth Animations**: Framer Motion-powered micro-interactions
+- **Fully Responsive**: Optimized for mobile, tablet, and desktop
+- **Type-Safe**: Full TypeScript coverage for better development experience
+- **Fast Performance**: Vite for instant HMR and optimized production builds
+- **Accessible Navigation**: Keyboard and screen reader friendly
 
-### `yarn test`
+## 📄 Pages
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Home** (`/`) - Introduction and hero section
+- **Projects** (`/projects`) - Portfolio of 9 professional projects
+- **Services** (`/services`) - Professional services offered
+- **Contact** (`/contact`) - Contact form and social media links
+- **404** - Custom error page
 
-### `yarn build`
+## 🎨 Design Features
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Color Palette
+- Background: Rich dark slate (`bg-slate-950`, `bg-slate-900`)
+- Primary Accent: Violet/Purple gradient (`from-violet-500 to-purple-600`)
+- Text: White with slate variations for hierarchy
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Typography
+- Primary Font: Inter (modern, clean sans-serif)
+- Monospace Font: JetBrains Mono (for technical content)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Components
+- Glass-effect cards with backdrop blur
+- Gradient text effects
+- Smooth hover transitions
+- Animated page transitions
+- Responsive navigation with mobile menu
 
-### `yarn eject`
+## 🛠️ Development
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Prerequisites
+- Node.js >= 18.0.0
+- npm >= 9.0.0
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Development Server
 
-## Learn More
+```bash
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Opens at [http://localhost:3000](http://localhost:3000)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Build for Production
 
-### Code Splitting
+```bash
+npm run build
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+Output in `build/` directory
 
-### Analyzing the Bundle Size
+### Preview Production Build
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+```bash
+npm run preview
+```
 
-### Making a Progressive Web App
+### Code Quality
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+```bash
+# Lint TypeScript files
+npm run lint
 
-### Advanced Configuration
+# Format code with Prettier
+npm run format
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## 📁 Project Structure
 
-### Deployment
+```
+src/
+  ├── components/       # Reusable UI components
+  │   ├── Button.tsx
+  │   ├── Card.tsx
+  │   ├── Input.tsx
+  │   ├── Textarea.tsx
+  │   ├── Layout.tsx
+  │   ├── Navigation.tsx
+  │   └── LoadingSpinner.tsx
+  ├── pages/           # Page components
+  │   ├── MainPage.tsx
+  │   ├── ProjectsPage.tsx
+  │   ├── ServicesPage.tsx
+  │   ├── ContactPage.tsx
+  │   └── Page404.tsx
+  ├── contexts/        # React contexts
+  │   └── NavigationContext.tsx
+  ├── constants/       # Data and configuration
+  │   ├── projects.ts
+  │   ├── pages.ts
+  │   └── links.ts
+  ├── types/          # TypeScript type definitions
+  │   └── index.ts
+  ├── App.tsx         # Main app component
+  ├── main.tsx        # Entry point
+  └── index.css       # Global styles
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+## 🎯 Projects Showcased
 
-### `yarn build` fails to minify
+1. **Cost Accounting** - Telegram Bot for financial tracking
+2. **Currency Converter** - Java library supporting 165+ currencies
+3. **Skill Repeater** - Gamified mobile learning system
+4. **Study Everyday** - Knowledge reinforcement platform
+5. **Bank Work** - Complete banking workspace solution
+6. **IoT Work** - Intelligent climate control system
+7. **Swing Teacher** - Java Swing IDE with interactive lessons
+8. **Schedule Editor** - University scheduling application
+9. **Rest Security** - Open-source Java security library
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## 🔗 Social Links
+
+- Telegram: [@dimitri_posadskiy](http://t.me/dimitri_posadskiy)
+- LinkedIn: [dimitri-posadskiy](https://linkedin.com/in/dimitri-posadskiy/)
+- Instagram: [@dimitri.posadskiy](https://instagram.com/dimitri.posadskiy)
+
+## 📧 Contact
+
+Contact form integrated with EmailJS for direct communication.
+
+## 📝 License
+
+See LICENSE file for details.
+
+---
+
+**Built with ❤️ using cutting-edge 2025 web technologies**
