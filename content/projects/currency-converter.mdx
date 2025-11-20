@@ -1,0 +1,23 @@
+---
+title: "Currency Converter"
+summary: "High-precision Java library that delivers live FX rates for 165+ currencies."
+icon: "/project-icons/currency-converter-icon.png"
+tags:
+  - Libraries
+  - Finance
+  - APIs
+stack:
+  - Java 21
+  - Vert.x
+  - Redis
+  - Jakarta REST
+role: "Principal Java Developer"
+status: "Maintained"
+featured: true
+weight: 80
+publishedAt: "2023-11-12"
+highlight: "Self-hosted FX microservice with SLA-grade caching."
+---
+
+The converter ingests multiple FX providers, normalizes the feeds, and returns deterministic exchange rates for both retail and treasury workflows. It exposes a single dependency that teams can embed into JVM services or run as a gRPC/REST edge. The caching layer keeps cold-start latency below 25 ms, and regression suites ensure rounding stays IFRS-compliant when we expand to exotic currencies.
+

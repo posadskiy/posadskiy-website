@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Principal Java Developer · Portfolio 2025
 
-## Available Scripts
+Modernized personal site for Dimitri Posadskiy. Built with Next.js 15 App Router, dark-first design language, Contentlayer-driven content, and accessibility/performance guard rails.
 
-In the project directory, you can run:
+### Features
 
-### `yarn start`
+- Next.js 15 App Router with React Server Components + selective client islands
+- Tailwind-powered design system (dark default, trendy lilac/neo-mint accents)
+- Contentlayer + MDX for projects, experience, and services data
+- Contact form with Resend-backed API route + social link fallbacks
+- Plausible analytics hook, structured data, OG metadata, and custom JSON-LD
+- Framer Motion micro-interactions, AI prompt helper, WCAG 2.2 checked colors
+- Jest + Testing Library unit tests, Playwright e2e scaffold
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Getting Started
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```bash
+npm install
+npm run dev
+```
 
-### `yarn test`
+Visit http://localhost:3000.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Scripts
 
-### `yarn build`
+- `npm run dev` – local development with Contentlayer watch mode
+- `npm run build` – production build
+- `npm start` – run the compiled app
+- `npm run lint` – Next.js + ESLint checks
+- `npm test` – Jest unit tests
+- `npm run test:e2e` – Playwright tests (requires build/dev server)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Environment Variables
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Create `.env.local` with:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+RESEND_API_KEY=xxxxxxxx
+CONTACT_FORWARD_EMAIL=principal@dimitri.dev
+NEXT_PUBLIC_PLAUSIBLE_DOMAIN=dimitri.dev
+```
 
-### `yarn eject`
+Without `RESEND_API_KEY`, messages are logged server-side for debugging.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Content
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Add/edit projects under `content/projects/*.mdx`
+- Update experience timeline via `content/experience/*.mdx`
+- Services live in `content/services/*.mdx`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+After changing content, re-run `npm run dev` or `npx contentlayer build`.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Testing & CI
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+- Unit tests cover hero + project rendering (`npm test`)
+- Playwright smoke test ensures routing + hero load (`npm run test:e2e`)
+- Recommended CI steps: `npm run lint`, `npm test`, `npm run test:e2e`
 
 ### Deployment
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Deploy on Vercel or any Node 18+ host:
 
-### `yarn build` fails to minify
+```bash
+npm run build
+npm start
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Ensure `RESEND_API_KEY` and analytics env vars are configured in the hosting platform.

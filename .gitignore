@@ -10,9 +10,14 @@
 
 # testing
 /coverage
+/.contentlayer
+/playwright-report
+/test-results
 
 # production
 /build
+/.next
+.vercel
 
 # misc
 .DS_Store
