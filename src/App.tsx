@@ -6,6 +6,7 @@ import { MainPage } from './pages/MainPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { ServicesPage } from './pages/ServicesPage';
 import { ContactPage } from './pages/ContactPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { Page404 } from './pages/Page404';
 import { PAGES } from './constants/pages';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path={PAGES.PROJECTS.url} element={<ProjectsPage />} />
           <Route path={PAGES.SERVICES.url} element={<ServicesPage />} />
           <Route path={PAGES.CONTACT.url} element={<ContactPage setLoading={setLoading} />} />
+          <Route path={PAGES.PRIVACY.url} element={<PrivacyPolicyPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       </Layout>

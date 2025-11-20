@@ -17,6 +17,10 @@ export const PAGES: Pages = {
     url: '/projects',
     component: 'Projects',
   },
+  PRIVACY: {
+    url: '/privacy',
+    component: 'PrivacyPolicy',
+  },
   PAGE404: {
     component: 'Page404',
   },

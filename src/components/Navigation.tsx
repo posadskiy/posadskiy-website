@@ -8,6 +8,7 @@ const navItems = [
   { label: 'Projects', path: PAGES.PROJECTS.url || '/projects' },
   { label: 'Services', path: PAGES.SERVICES.url || '/services' },
   { label: 'Contact', path: PAGES.CONTACT.url || '/contact' },
+  { label: 'Privacy', path: PAGES.PRIVACY.url || '/privacy' },
 ];
 
 export const Navigation = () => {

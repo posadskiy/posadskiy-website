@@ -52,6 +52,7 @@ export interface Pages {
   SERVICES: PageConfig;
   PROJECTS: PageConfig;
   PAGE404: PageConfig;
+  PRIVACY: PageConfig;
 }
 
 // Navigation types
