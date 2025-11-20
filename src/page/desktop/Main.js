@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Image} from "semantic-ui-react";
 
 class Main extends Component {
 	render() {
@@ -14,7 +13,7 @@ class Main extends Component {
 					</div>
 				</div>
 				<div id="photo" style={{alignSelf: "flex-end",  paddingRight: "40px", flex: 1}}>
-					<Image src='/main_photo.png' style={{height: "100%", width: "100%"}} />
+					<img src='/main_photo.png' alt="Dimitri Posadskiy" style={{height: "100%", width: "100%", objectFit: "contain"}} />
 				</div>
 			</div>
 		)

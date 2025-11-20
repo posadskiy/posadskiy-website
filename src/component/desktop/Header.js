@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Icon, Image} from "semantic-ui-react";
+import {Button, Box} from "@mui/material";
+import {Visibility, Mail, LinkedIn as LinkedInIcon, GitHub, Instagram as InstagramIcon} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 import {History, Pages} from "../../common";
 import {Container} from "./index";
@@ -16,40 +17,46 @@ class Header extends Component {
 			<Container>
 				<div id="left-panel"
 				     style={{height: "100%", background: "#181818", display: "flex", flex: 1, flexDirection: "column"}}>
-					<div style={{
+					<Box sx={{
 						flex: 1,
 						display: "flex",
 						flexDirection: "column",
 						justifyContent: "space-evenly",
 						alignItems: "center"
 					}}>
-						<Image 
-              as={Link} 
+						<Box
+              component={Link} 
               to={"/"} 
-              style={{maxWidth: "80%", maxHeight: "80%"}} 
-              src={Logo.BlackCircle.get(Logo.BlackCircle.size128)}
-            />
-					</div>
+              sx={{maxWidth: "80%", maxHeight: "80%", display: "block"}}
+            >
+              <img src={Logo.BlackCircle.get(Logo.BlackCircle.size128)} alt="Logo" style={{maxWidth: "100%", height: "auto"}} />
+            </Box>
+					</Box>
 					<div style={{flex: 2}}></div>
-					<div id="menu" style={{flex: 4, display: "flex", flexDirection: "column", justifyContent: "space-evenly"}}>
-						{/*<Button id="nonShadow" onClick={() => History.push(Page.SERVICES)} basic color="teal"
-						        style={{marginRight: 0, paddingLeft: 0}} animated='fade'>
-							<Button.Content visible><Icon name="setting" size="big" style={{marginRight: 0}}/></Button.Content>
-							<Button.Content hidden>Service</Button.Content>
-						</Button>*/}
-						<Button id="nonShadow" onClick={() => History.push(Pages.PROJECTS.url)} basic color="teal"
-						        style={{marginRight: 0, paddingLeft: 0}} animated='fade'>
-							<Button.Content visible><Icon name="eye" size="big" style={{marginRight: 0}}/></Button.Content>
-							<Button.Content hidden>Projects</Button.Content>
+					<Box id="menu" sx={{flex: 4, display: "flex", flexDirection: "column", justifyContent: "space-evenly"}}>
+						<Button 
+							id="nonShadow" 
+							onClick={() => History.push(Pages.PROJECTS.url)} 
+							variant="text"
+							color="primary"
+							sx={{marginRight: 0, paddingLeft: 0, color: "#00B5AD", justifyContent: "flex-start"}}
+							startIcon={<Visibility />}
+						>
+							Projects
 						</Button>
-					  <Button id="nonShadow" onClick={() => History.push(Pages.CONTACT.url)} basic color="teal"
-						        style={{marginRight: 0, paddingLeft: 0}} animated='fade'>
-							<Button.Content visible><Icon name="mail" size="big" style={{marginRight: 0}}/></Button.Content>
-							<Button.Content hidden>Contact</Button.Content>
-            </Button>
-					</div>
+						<Button 
+							id="nonShadow" 
+							onClick={() => History.push(Pages.CONTACT.url)} 
+							variant="text"
+							color="primary"
+							sx={{marginRight: 0, paddingLeft: 0, color: "#00B5AD", justifyContent: "flex-start"}}
+							startIcon={<Mail />}
+						>
+							Contact
+						</Button>
+					</Box>
 					<div style={{flex: 2}}></div>
-					<div id="social" style={{
+					<Box id="social" sx={{
 						flex: 2,
 						display: "flex",
 						flexDirection: "column",
@@ -57,24 +64,15 @@ class Header extends Component {
 						alignItems: "center"
 					}}>
 						<a href={SocialLink.Linkedin} target="_blank" rel="noopener noreferrer">
-              <Icon name="linkedin"
-                    size="large" 
-                    style={{color: "#00B5AD"}}
-              />
+              <LinkedInIcon sx={{fontSize: "2rem", color: "#00B5AD"}} />
 						</a>
 						<a href={SocialLink.GitHub} target="_blank" rel="noopener noreferrer">
-              <Icon name="github"
-                    size="large"
-                    style={{color: "#00B5AD"}}
-              />
+              <GitHub sx={{fontSize: "2rem", color: "#00B5AD"}} />
 						</a>
 						<a href={SocialLink.Instagram} target="_blank" rel="noopener noreferrer">
-              <Icon name="instagram" 
-                    size="large" 
-                    style={{color: "#00B5AD"}}
-              />
+              <InstagramIcon sx={{fontSize: "2rem", color: "#00B5AD"}} />
 						</a>
-					</div>
+					</Box>
 				</div>
 				{children}
 			</Container>

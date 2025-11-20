@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Icon, Input} from "semantic-ui-react";
+import {TextField, Box} from "@mui/material";
+import {Book, ArrowBack, ArrowForward, Refresh, Info} from "@mui/icons-material";
 
 class RightPage extends Component {
 	render() {
@@ -9,29 +10,36 @@ class RightPage extends Component {
 
 		const pageUrl = 'https://posadskiy.com/' + pageName;
 		return (
-			<div style={{flex: 1, height: "100%", paddingLeft: "20px", paddingRight: "40px", display: "flex", flexDirection: "column", alignSelf: "center"}}>
-				<div style={{flex: 2, display: "flex", flexDirection: "column", justifyContent: "flex-end"}}>
-					<div style={{display: "flex", flexDirection: "row"}}>
-						<div style={{flex: 1, display: "flex", flexDirection: "row", background: "white", paddingTop: "5px", paddingBottom: "5px", borderTopLeftRadius: "7px", borderTopRightRadius: "7px"}}>
-							<Icon style={{flex: 1, alignSelf: "center", fontSize: "1.6em"}} name="book" />
-							<p style={{flex: 3}}>{pageName}</p>
-						</div>
-						<div style={{flex: 2}}></div>
-					</div>
-					<div style={{background: "white", display: "flex", flexDirection: "row"}}>
-						<Icon style={{flex: 1, alignSelf: "center", fontSize: "1.6em"}} name="arrow left" />
-						<Icon style={{flex: 1, alignSelf: "center", fontSize: "1.6em"}} name="arrow right" />
-						<Icon style={{flex: 1, alignSelf: "center", fontSize: "1.6em"}} name="redo" />
-						<Input style={{flex: 15}} icon='info circle' iconPosition='left' value={pageUrl} />
-					</div>
-				</div>
-				<div style={{flex: 4, display: "flex"}}>
+			<Box sx={{flex: 1, height: "100%", paddingLeft: "20px", paddingRight: "40px", display: "flex", flexDirection: "column", alignSelf: "center"}}>
+				<Box sx={{flex: 2, display: "flex", flexDirection: "column", justifyContent: "flex-end"}}>
+					<Box sx={{display: "flex", flexDirection: "row"}}>
+						<Box sx={{flex: 1, display: "flex", flexDirection: "row", background: "white", paddingTop: "5px", paddingBottom: "5px", borderTopLeftRadius: "7px", borderTopRightRadius: "7px"}}>
+							<Book sx={{flex: 1, alignSelf: "center", fontSize: "1.6em"}} />
+							<p style={{flex: 3, margin: 0, alignSelf: "center"}}>{pageName}</p>
+						</Box>
+						<Box sx={{flex: 2}}></Box>
+					</Box>
+					<Box sx={{background: "white", display: "flex", flexDirection: "row", alignItems: "center"}}>
+						<ArrowBack sx={{flex: 1, fontSize: "1.6em", cursor: "pointer"}} />
+						<ArrowForward sx={{flex: 1, fontSize: "1.6em", cursor: "pointer"}} />
+						<Refresh sx={{flex: 1, fontSize: "1.6em", cursor: "pointer"}} />
+						<TextField
+							value={pageUrl}
+							size="small"
+							sx={{flex: 15}}
+							InputProps={{
+								startAdornment: <Info sx={{mr: 1, color: "action.active"}} />
+							}}
+						/>
+					</Box>
+				</Box>
+				<Box sx={{flex: 4, display: "flex"}}>
 					{this.props.children}
-				</div>
-				<div style={{flex: 2}}>
+				</Box>
+				<Box sx={{flex: 2}}>
 					
-				</div>
-			</div>
+				</Box>
+			</Box>
 		)
 	}
 }

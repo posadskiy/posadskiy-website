@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
-import {Responsive, Sidebar} from "semantic-ui-react";
+import {Box} from "@mui/material";
 import {Utils} from "../../common";
+
+// Semantic UI breakpoints: Mobile 0-767px, Tablet 768-991px
+const TABLET_MAX_WIDTH = 991;
 
 class Container extends Component {
 	render() {
+		const width = Utils.getWidth(0);
+		const shouldShow = width <= TABLET_MAX_WIDTH;
+		
+		if (!shouldShow) {
+			return null;
+		}
+		
 		return (
-			<Responsive
-				as={Sidebar.Pushable}
-				getWidth={() => Utils.getWidth(Responsive.onlyMobile.minWidth)}
-				maxWidth={Responsive.onlyTablet.maxWidth}
-				style={{position: "absolute", width: "100%", overflowX: "auto"}}
-			>
+			<Box sx={{position: "absolute", width: "100%", overflowX: "auto"}}>
 				{this.props.children}
-			</Responsive>
+			</Box>
 		)
 	}
 }

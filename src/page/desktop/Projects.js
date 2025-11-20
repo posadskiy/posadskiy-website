@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Grid} from "semantic-ui-react";
+import {Grid} from "@mui/material";
 import {Desktop} from "../../component";
 import {Project} from '../../common/Projects';
 import ProjectView from "../../component/desktop/ProjectView";
@@ -68,63 +68,63 @@ class Projects extends Component {
             during development, prepares for publishing, maintains, and improves during their life cycle.</p>
 				</Desktop.LeftPage>
 				<Desktop.RightPage pageName="Projects">
-					<Grid columns={3} divided style={{margin: 0, background: "lightgray"}}>
-						<Grid.Column>
+					<Grid container spacing={1} sx={{margin: 0, background: "lightgray"}}>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
 								project={Project.CostAccounting}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
-						<Grid.Column>
+						</Grid>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
                 project={Project.CurrencyConverter}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
-						<Grid.Column>
+						</Grid>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
                 project={Project.SkillRepeater}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
+						</Grid>
 
-						<Grid.Column>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
                 project={Project.StudyEveryday}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
-						<Grid.Column>
+						</Grid>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
                 project={Project.BankWork}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
-						<Grid.Column>
+						</Grid>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
 								project={Project.IoTWork}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
+						</Grid>
 
-						<Grid.Column>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
 								project={Project.SwingTeacher}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
-						<Grid.Column>
+						</Grid>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
                 project={Project.ScheduleEditor}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
-						<Grid.Column>
+						</Grid>
+						<Grid item xs={4}>
 							<Desktop.ProjectItem
 								project={Project.RestSecurity}
                 onClick={this.onClick}
 							/>
-						</Grid.Column>
+						</Grid>
 					</Grid>
 				</Desktop.RightPage>
 			</Desktop.LeftRightPage>

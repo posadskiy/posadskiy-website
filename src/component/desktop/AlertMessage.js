@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Button} from "semantic-ui-react";
+import {Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography} from "@mui/material";
 
 class AlertMessage extends Component {
   
@@ -14,22 +14,23 @@ class AlertMessage extends Component {
     } = this.props;
 
     return (
-      <Modal
-        open={isOpen}
-        size="tiny"
-        onClose={close}
-        trigger={button}
-      >
-        <Modal.Header>{header}</Modal.Header>
-        <Modal.Content>
-          <Modal.Description>
-            {description}
-          </Modal.Description>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button onClick={close}>{confirmText}</Button>
-        </Modal.Actions>
-      </Modal>
+      <>
+        {button}
+        <Dialog
+          open={isOpen}
+          onClose={close}
+          maxWidth="xs"
+          fullWidth
+        >
+          <DialogTitle>{header}</DialogTitle>
+          <DialogContent>
+            <Typography>{description}</Typography>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={close}>{confirmText}</Button>
+          </DialogActions>
+        </Dialog>
+      </>
     )
   }
 }

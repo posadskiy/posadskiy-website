@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Button, Image} from "semantic-ui-react";
+import {Dialog, DialogTitle, DialogContent, DialogActions, Button, Box, Typography} from "@mui/material";
 import {getProjectIconLink} from "../../common/Projects";
 
 class ProjectView extends Component {
@@ -16,22 +16,26 @@ class ProjectView extends Component {
     } = this.props;
 
     return (
-      <Modal
-        open={isOpen}
-        onClose={close}
-        trigger={button}
-      >
-        <Modal.Header>{header}</Modal.Header>
-        <Modal.Content image>
-          <Image size='medium' src={getProjectIconLink(image)} wrapped />
-          <Modal.Description>
-            {description}
-          </Modal.Description>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button onClick={close}>{confirmText}</Button>
-        </Modal.Actions>
-      </Modal>
+      <>
+        {button}
+        <Dialog
+          open={isOpen}
+          onClose={close}
+          maxWidth="md"
+          fullWidth
+        >
+          <DialogTitle>{header}</DialogTitle>
+          <DialogContent>
+            <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2}}>
+              <img src={getProjectIconLink(image)} alt={header} style={{maxWidth: '200px', height: 'auto'}} />
+              <Typography>{description}</Typography>
+            </Box>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={close}>{confirmText}</Button>
+          </DialogActions>
+        </Dialog>
+      </>
     )
   }
 }

@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Desktop} from "../../component";
-import {Button, TextArea, Input, Icon, List} from "semantic-ui-react";
-import emailjs from 'emailjs-com';
+import {Button, TextField, List, ListItem, ListItemText, Box} from "@mui/material";
+import {Telegram, Facebook, LinkedIn, Instagram} from "@mui/icons-material";
+import emailjs from '@emailjs/browser';
 import {SocialLink} from '../../common/Link';
 import {AlertMessage} from "../../component/desktop";
 
@@ -131,11 +132,23 @@ class Contact extends Component {
 			<Desktop.LeftRightPage>
 				<Desktop.LeftPage pageName="Contact">
           <div>You can send me message via</div>
-          <List divided inverted selection>
-            <List.Item as='a' href={SocialLink.Telegram}><Icon name="telegram" />Telegram</List.Item>
-            <List.Item as='a' href={SocialLink.Messenger}><Icon name="facebook messenger" />Messenger</List.Item>
-            <List.Item as='a' href={SocialLink.Linkedin}><Icon name="linkedin" />Linkedin</List.Item>
-            <List.Item as='a' href={SocialLink.Instagram}><Icon name="instagram" />Instagram</List.Item>
+          <List>
+            <ListItem component="a" href={SocialLink.Telegram} sx={{color: 'inherit', textDecoration: 'none'}}>
+              <Telegram sx={{mr: 1}} />
+              <ListItemText primary="Telegram" />
+            </ListItem>
+            <ListItem component="a" href={SocialLink.Messenger} sx={{color: 'inherit', textDecoration: 'none'}}>
+              <Facebook sx={{mr: 1}} />
+              <ListItemText primary="Messenger" />
+            </ListItem>
+            <ListItem component="a" href={SocialLink.Linkedin} sx={{color: 'inherit', textDecoration: 'none'}}>
+              <LinkedIn sx={{mr: 1}} />
+              <ListItemText primary="Linkedin" />
+            </ListItem>
+            <ListItem component="a" href={SocialLink.Instagram} sx={{color: 'inherit', textDecoration: 'none'}}>
+              <Instagram sx={{mr: 1}} />
+              <ListItemText primary="Instagram" />
+            </ListItem>
           </List>
           <div>or the inline form on the right</div>
 				</Desktop.LeftPage>
@@ -144,39 +157,61 @@ class Contact extends Component {
             <div style={{textAlign: "center", padding: "20px 0"}}>
               <div style={{height: "100%", width: "100%", fontFamily: "Fira Mono", fontSize: "24px", color: "#777"}}>Feedback form</div>
             </div>
-						<div style={{textAlign: "center", padding: "3px 10px", height: "100%"}}>
-							<TextArea style={{height: "100%", width: "100%", fontFamily: "Fira Mono", fontSize: "24px"}}
-                        value={message}
-							          placeholder="Input message here"
-                        onInput={this.onMessageInput}
+						<Box sx={{textAlign: "center", padding: "3px 10px", height: "100%"}}>
+							<TextField
+								multiline
+								fullWidth
+								value={message}
+								placeholder="Input message here"
+								onChange={this.onMessageInput}
+								sx={{
+									height: "100%",
+									'& .MuiInputBase-root': {
+										fontFamily: "Fira Mono",
+										fontSize: "24px",
+										height: "100%"
+									}
+								}}
+							/>
+						</Box>
+						<Box sx={{textAlign: "center", padding: "3px 10px"}}>
+              <TextField
+								fullWidth
+								value={name}
+								placeholder='Your name'
+								onChange={this.onNameInput}
+								sx={{
+									'& .MuiInputBase-root': {
+										fontFamily: "Fira Mono",
+										fontSize: "18px"
+									}
+								}}
               />
-						</div>
-						<div style={{textAlign: "center", padding: "3px 10px"}}>
-              <Input style={{fontFamily: "Fira Mono", fontSize: "18px"}}
-                     value={name}
-                     placeholder='Your name'
-                     onChange={this.onNameInput}
-                     icon={{ name: 'smile outline', circular: true, link: true, position: 'right' }}
+						</Box>
+						<Box sx={{textAlign: "center", padding: "3px 10px"}}>
+              <TextField
+								fullWidth
+								value={email}
+								placeholder='Email for answer'
+								onChange={this.onEmailInput}
+								sx={{
+									'& .MuiInputBase-root': {
+										fontFamily: "Fira Mono",
+										fontSize: "18px"
+									}
+								}}
               />
-						</div>
-						<div style={{ textAlign: "center", padding: "3px 10px"}}>
-              <Input style={{fontFamily: "Fira Mono", fontSize: "18px"}}
-                     value={email}
-                     placeholder='Email for answer'
-                     onChange={this.onEmailInput}
-                     icon={{ name: 'at', circular: true, link: true, position: 'right' }}
-              />
-						</div>
-						<div style={{ display: "flex", justifyContent: "center", width: "100%", padding: "3px 10px"}}>
+						</Box>
+						<Box sx={{ display: "flex", justifyContent: "center", width: "100%", padding: "3px 10px"}}>
               <AlertMessage
                 isOpen={open}
                 close={this.closeAlert}
                 header={header}
                 description={description}
                 confirmText={confirmText}
-                button={<Button style={{marginBottom: "10px", width: "30%", background: "#00B5AD"}} onClick={this.sendEmail}>Send</Button>}
+                button={<Button variant="contained" sx={{marginBottom: "10px", width: "30%", backgroundColor: "#00B5AD", '&:hover': {backgroundColor: "#009c96"}}} onClick={this.sendEmail}>Send</Button>}
               />
-						</div>
+						</Box>
 					</div>
 				</Desktop.RightPage>
 			</Desktop.LeftRightPage>

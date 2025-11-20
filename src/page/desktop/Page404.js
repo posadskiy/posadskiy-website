@@ -1,19 +1,17 @@
 import React, {Component} from 'react';
-import {Button, Grid, Header} from "semantic-ui-react";
+import {Button, Grid, Typography, Box} from "@mui/material";
 import {Link} from "react-router-dom";
 
 class Page404 extends Component {
 
 	render() {
 		return (
-			<Grid verticalAlign='middle' style={{ height: '100vh' }} columns={1} centered>
-				<Grid.Row>
-					<Grid.Column style={{display: 'flex', alignItems: 'center'}}>
-						<Header as='h1'>404</Header>
-						<Header as='h3'>Page does not exist</Header>
-						<Button as={Link} to="/" positive justify style={{width: '100%', paddingRight: 0}}>Go to Home</Button>
-					</Grid.Column>
-				</Grid.Row>
+			<Grid container sx={{ height: '100vh' }} alignItems="center" justifyContent="center">
+				<Grid item xs={12} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2}}>
+					<Typography variant="h1">404</Typography>
+					<Typography variant="h3">Page does not exist</Typography>
+					<Button component={Link} to="/" variant="contained" color="primary" sx={{width: '100%', maxWidth: '300px'}}>Go to Home</Button>
+				</Grid>
 			</Grid>
 		);
 	}
