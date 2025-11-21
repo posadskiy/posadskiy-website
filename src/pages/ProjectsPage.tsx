@@ -4,9 +4,10 @@ import { getAllProjects } from '@/constants/projects';
 import { Card } from '@/components/Card';
 import { Project, ProjectCategory, ProjectStatus } from '@/types';
 
-const CATEGORY_FILTERS = ['All', 'Fintech', 'Security', 'Learning', 'Enterprise', 'IoT'] as const;
+const CATEGORY_FILTERS = ['All', 'Fintech', 'Security', 'Learning', 'Enterprise', 'FamilyOps', 'IoT'] as const;
 type CategoryFilter = (typeof CATEGORY_FILTERS)[number];
 const STATUS_STYLES: Record<ProjectStatus, string> = {
+  Released: 'bg-emerald-400 text-slate-900',
   'In production': 'bg-emerald-400 text-slate-900',
   Maintained: 'bg-sky-500 text-white',
   'R&D': 'bg-amber-400 text-slate-900',
@@ -244,6 +245,28 @@ export const ProjectsPage = () => {
                         ))}
                       </div>
                     )}
+                    {project.link && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold uppercase tracking-wide text-violet-300 hover:text-violet-100 transition-colors mt-2 inline-flex items-center gap-1"
+                        onClick={(event) => event.stopPropagation()}
+                      >
+                        <svg
+                          className="-ml-0.5 h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.6}
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17h10M11 7h7v7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 3h7v7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5" />
+                        </svg>
+                        View source
+                      </a>
+                    )}
                   </div>
 
                 </Card>
@@ -334,6 +357,29 @@ export const ProjectsPage = () => {
                           {tech}
                         </span>
                       ))}
+                    </div>
+                  )}
+                  {selectedProject.link && (
+                    <div className="pt-3">
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-violet-300 hover:text-violet-100 transition-colors"
+                      >
+                        <svg
+                          className="h-4 w-4"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth={1.6}
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17h10M11 7h7v7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 3h7v7" />
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5" />
+                        </svg>
+                        View source code
+                      </a>
                     </div>
                   )}
                 </div>
