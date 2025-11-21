@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
@@ -13,6 +13,9 @@ interface ContactPageProps {
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit';
 const WEB3FORMS_ACCESS_KEY =
   import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'ac01c9ec-65b2-492d-aad5-45939470ba8f';
+const LAST_SUBMISSION_KEY = 'contactForm:lastSubmission';
+const MACHINE_ID_KEY = 'contactForm:machineId';
+const SUBMISSION_TIMEOUT_MS = 60 * 60 * 1000; // 1 hour
 
 const socialIcons = [
   {
@@ -60,6 +63,20 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
     message: '',
   });
 
+  const [machineId, setMachineId] = useState<string>('');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const storedMachineId = window.localStorage.getItem(MACHINE_ID_KEY);
+    if (storedMachineId) {
+      setMachineId(storedMachineId);
+    } else {
+      const newMachineId = crypto.randomUUID();
+      window.localStorage.setItem(MACHINE_ID_KEY, newMachineId);
+      setMachineId(newMachineId);
+    }
+  }, []);
+
   const [alert, setAlert] = useState<AlertState>({
     open: false,
     header: '',
@@ -67,8 +84,53 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
     confirmText: '',
   });
 
+  const getLastSubmissionTimestamp = () => {
+    if (typeof window === 'undefined') return null;
+    const storedTimestamp = window.localStorage.getItem(LAST_SUBMISSION_KEY);
+    if (!storedTimestamp) return null;
+    const parsedTimestamp = parseInt(storedTimestamp, 10);
+    return Number.isFinite(parsedTimestamp) ? parsedTimestamp : null;
+  };
+
+  const setLastSubmissionTimestamp = () => {
+    if (typeof window === 'undefined') return;
+    window.localStorage.setItem(LAST_SUBMISSION_KEY, Date.now().toString());
+  };
+
+  const ensureMachineId = () => {
+    if (typeof window === 'undefined') return '';
+    if (machineId) return machineId;
+    const storedMachineId = window.localStorage.getItem(MACHINE_ID_KEY);
+    if (storedMachineId) {
+      setMachineId(storedMachineId);
+      return storedMachineId;
+    }
+    const newMachineId = crypto.randomUUID();
+    window.localStorage.setItem(MACHINE_ID_KEY, newMachineId);
+    setMachineId(newMachineId);
+    return newMachineId;
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    const lastSubmissionTimestamp = getLastSubmissionTimestamp();
+    if (lastSubmissionTimestamp) {
+      const timeSinceLastSubmission = Date.now() - lastSubmissionTimestamp;
+      if (timeSinceLastSubmission < SUBMISSION_TIMEOUT_MS) {
+        const remainingMs = SUBMISSION_TIMEOUT_MS - timeSinceLastSubmission;
+        const remainingMinutes = Math.ceil(remainingMs / (60 * 1000));
+        setAlert({
+          open: true,
+          header: 'Please wait',
+          description: `You can send another message in ${remainingMinutes} minute${
+            remainingMinutes === 1 ? '' : 's'
+          }.`,
+          confirmText: 'OK',
+        });
+        return;
+      }
+    }
 
     if (formData.message.length < 30) {
       setAlert({
@@ -109,6 +171,7 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
       submission.append('from_name', formData.name);
       submission.append('email', formData.email);
       submission.append('message', formData.message);
+      submission.append('machine_id', ensureMachineId());
 
       const response = await fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
@@ -123,6 +186,7 @@ export const ContactPage = ({ setLoading }: ContactPageProps) => {
       }
 
       setFormData({ name: '', email: '', message: '' });
+      setLastSubmissionTimestamp();
       setAlert({
         open: true,
         header: 'Success!',
