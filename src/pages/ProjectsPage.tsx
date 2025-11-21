@@ -8,15 +8,10 @@ const CATEGORY_FILTERS = ['All', 'Fintech', 'Security', 'Learning', 'Enterprise'
 type CategoryFilter = (typeof CATEGORY_FILTERS)[number];
 const STATUS_STYLES: Record<ProjectStatus, string> = {
   Released: 'bg-emerald-400 text-slate-900',
-  'In production': 'bg-emerald-400 text-slate-900',
-  Maintained: 'bg-sky-500 text-white',
   'R&D': 'bg-amber-400 text-slate-900',
   Community: 'bg-cyan-400 text-slate-900',
-  Operational: 'bg-indigo-500 text-white',
   Beta: 'bg-purple-500 text-white',
-  Active: 'bg-pink-500 text-white',
-  'Open Source': 'bg-lime-400 text-slate-900',
-  Shipped: 'bg-blue-500 text-white',
+  'Open Source': 'bg-lime-400 text-slate-900'
 };
 
 const createIcon = (children: ReactNode) => (
