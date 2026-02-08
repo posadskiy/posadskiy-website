@@ -32,7 +32,7 @@ export interface ProjectData {
   StudyEveryday: Project;
   BankWork: Project;
   IoTWork: Project;
-  SwingTeacher: Project;
+  SwingTutor: Project;
   ScheduleEditor: Project;
   RestSecurity: Project;
 }

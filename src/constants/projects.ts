@@ -112,8 +112,8 @@ export const PROJECTS: ProjectData = {
     link: 'https://setpoint.ai',
     body: `I participated in and manage development of both server and client parts, introduced CI, performance testing, security checks, and a unified database, and orchestrated a shared release cadence. Stand-ups, knowledge exchanges, candidate interviews, and onboarding keep the full-stack, AI, and AQA specialists aligned. As a result releases ship on time (without overtime), development speed quintupled, communication between server and embedded teams improved, and operator reporting became automated, routing device issues to curated solutions.`,
   },
-  SwingTeacher: {
-    name: 'Swing Teacher',
+  SwingTutor: {
+    name: 'Java Swing Tutor',
     description: 'IDE-with-lessons that guides newcomers to production-grade Java Swing.',
     categories: ['Learning'],
     status: 'Open Source',
@@ -126,9 +126,9 @@ export const PROJECTS: ProjectData = {
     featured: false,
     weight: 55,
     publishedAt: '2018-03-04',
-    slug: '/projects/swing-teacher',
-    link: 'https://github.com/posadskiy/SwingTeacherDesktop',
-    body: `Swing Teacher packages curated exercises, test harnesses, and UI previews into one teaching IDE. Students read a short brief, run the scaffold, then the app validates their implementation against unit tests.`,
+    slug: '/projects/swing-tutor',
+    link: 'https://github.com/posadskiy/java-swing-tutor',
+    body: `Java Swing Tutor packages curated exercises, test harnesses, and UI previews into one teaching IDE. Students read a short brief, run the scaffold, then the app validates their implementation against unit tests.`,
   },
   ScheduleEditor: {
     name: 'Schedule Editor',
