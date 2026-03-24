@@ -1,0 +1,21 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: posadskiy-website
+  namespace: website
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`posadskiy.com`) || Host(`www.posadskiy.com`)
+      kind: Rule
+      services:
+        - name: posadskiy-website
+          port: 3000
+      priority: 10
+  tls:
+    certResolver: letsencrypt
+    domains:
+      - main: posadskiy.com
+        sans:
+          - www.posadskiy.com

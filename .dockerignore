@@ -1,0 +1,14 @@
+node_modules
+build
+dist
+.git
+.gitignore
+.env*
+*.md
+.vscode
+.idea
+coverage
+*.log
+Dockerfile*
+!Dockerfile.prod
+deployment
