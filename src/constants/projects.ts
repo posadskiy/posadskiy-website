@@ -4,11 +4,11 @@ export const PROJECTS: ProjectData = {
   CostAccounting: {
     name: 'Costy',
     description:
-      'Mobile and Web application that tracks expenses and incomes, provide statistics and analytics',
+      'Collaborative budget platform for tracking purchases and incomes across shared projects, with spending analytics and category-level limits.',
+    body: "You create a shared project and invite family members or teammates by invite code, so everyone logs purchases and incomes into the same ledger. Each transaction is tagged with a category and currency, and you can set a spending limit per category per project so the dashboard immediately shows how close you are to the cap. The statistics view breaks down the month by day, letting you spot when spending spikes, compare purchase and income totals by category, or drill into a single member's activity. A profile layer keeps each user's active project in sync, so switching context between personal and shared budgets is one tap.",
     categories: ['Fintech', 'FamilyOps'],
     status: 'Beta',
-    body: 'Evaluate current financial strategy, provides insides on current month statistics and limits',
-    tags: ['Fintech', 'Automation', 'FamilyOps'],
+    tags: ['Fintech', 'Finance'],
     stack: ['Java 25', 'Micronaut', 'Microservices', 'PostgreSQL', 'React JS'],
     roles: ['Creator', 'Developer'],
     weight: 90,
@@ -19,12 +19,13 @@ export const PROJECTS: ProjectData = {
   },
   SkillRepeater: {
     name: 'Repeaty',
-    description: 'Web application that reminds you to refresh skills on your chosen cadence.',
+    description:
+      'Spaced-repetition platform for tracking skills with configurable intervals, priority levels, and email reminders when repetitions are due.',
+    body: "You add a skill, pick how often you want to revisit it — anything from every few hours to once a year — and assign a priority from Low to Critical so the most important things surface first. Every time you mark a skill as practiced, its level goes up and the next due date shifts forward automatically. When a repetition window opens, Repeaty sends you an email reminder so nothing falls through the cracks even if you haven't logged in. Over time the history log shows exactly when you last practiced each skill and how your levels have grown, giving you a concrete picture of consistency across everything you're trying to keep sharp.",
     categories: ['Learning'],
     status: 'Beta',
-    body: 'Keeps muscle memory sharp by nudging you when practice windows open.',
-    tags: ['Learning', 'Productivity', 'Notifications'],
-    stack: ['Java 21', 'Micronaut', 'Microservices', 'React JS', 'PostgreSQL'],
+    tags: ['Learning', 'Productivity'],
+    stack: ['Java 25', 'Micronaut', 'Microservices', 'React JS', 'PostgreSQL'],
     roles: ['Creator', 'Developer'],
     weight: 80,
     from: '2019-01-05',
