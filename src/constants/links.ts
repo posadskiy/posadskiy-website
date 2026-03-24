@@ -5,7 +5,5 @@ export const SOCIAL_LINKS: SocialLinks = {
   Linkedin: 'https://linkedin.com/in/dimitri-posadskiy/',
   Messenger: 'https://m.me/dmitry.posadsky',
   Instagram: 'https://instagram.com/dimitri.posadskiy',
+  Github: 'https://github.com/posadskiy',
 };
-
-export const GITHUB_LINK = 'https://github.com/posadskiy';
-

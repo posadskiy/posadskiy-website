@@ -16,7 +16,7 @@ export interface Project {
   highlight?: string;
   tags?: string[];
   stack?: string[];
-  role?: string;
+  roles?: string[];
   featured?: boolean;
   weight?: number;
   publishedAt?: string;
@@ -35,6 +35,8 @@ export interface ProjectData {
   SwingTutor: Project;
   ScheduleEditor: Project;
   RestSecurity: Project;
+  UserComponentReact: Project;
+  AuthComponentReact: Project;
 }
 
 // Page types
@@ -78,5 +80,6 @@ export interface SocialLinks {
   Messenger: string;
   Linkedin: string;
   Instagram: string;
+  Github: string;
 }
 

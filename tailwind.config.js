@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Modern dark theme with violet/purple accent (2025 trend)
         primary: {
           50: '#faf5ff',
           100: '#f3e8ff',

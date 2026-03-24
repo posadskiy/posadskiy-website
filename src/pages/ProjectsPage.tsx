@@ -354,6 +354,21 @@ export const ProjectsPage = () => {
                       ))}
                     </div>
                   )}
+                  {selectedProject.roles && selectedProject.roles.length > 0 && (
+                    <div className="flex flex-wrap items-center gap-2 pt-1">
+                      <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                        Role
+                      </span>
+                      {selectedProject.roles.map((role: string) => (
+                        <span
+                          key={`${selectedProject.name}-role-${role}`}
+                          className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-violet-500/15 text-violet-300 border border-violet-500/25"
+                        >
+                          {role}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   {selectedProject.link && (
                     <div className="pt-3">
                       <a
