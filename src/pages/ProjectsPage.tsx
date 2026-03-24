@@ -47,84 +47,102 @@ const createIcon = (children: ReactNode) => (
   </svg>
 );
 
-const DEFAULT_ICON = createIcon(
-  <>
-    <circle cx="12" cy="12" r="6" />
-    <path d="M12 6v12M6 12h12" />
-  </>,
-);
-
 const PROJECT_ICON_MAP: Record<string, ReactNode> = {
-  'Cost Accounting': createIcon(
+  Costy: createIcon(
     <>
-      <rect x="3" y="7" width="18" height="12" rx="3" />
-      <path d="M16 7V5a2 2 0 00-2-2H7a2 2 0 00-2 2v2" />
-      <circle cx="16" cy="13" r="2" />
+      {/* Wallet with card pocket */}
+      <path d="M3 9a2 2 0 012-2h14a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+      <path d="M15 13.5a2.5 2.5 0 015 0v1a2.5 2.5 0 01-5 0v-1z" />
+      <path d="M3 13h12" />
+    </>,
+  ),
+  Repeaty: createIcon(
+    <>
+      {/* Simple rotate-CW arrow */}
+      <path d="M21 2v6h-6" />
+      <path d="M21 13a9 9 0 1 1-3-7.7L21 8" />
     </>,
   ),
   'Currency Converter': createIcon(
     <>
-      <circle cx="12" cy="12" r="5.5" />
-      <path d="M8 11h4.5a1.5 1.5 0 010 3H9m6.5-5H12a1.5 1.5 0 000 3H15" />
-      <path d="M9 7.5L7.5 6 6 7.5M15 16.5L16.5 18 18 16.5" />
-    </>,
-  ),
-  'Skill Repeater': createIcon(
-    <>
-      <path d="M7 7.5l4-4 4 4" />
-      <path d="M11 3.5v7a3 3 0 003 3h2.5" />
-      <path d="M17 16.5l-4 4-4-4" />
-      <path d="M13 20.5v-7a3 3 0 00-3-3H7.5" />
+      {/* Bidirectional exchange arrows */}
+      <path d="M7 6H3l4-4" />
+      <path d="M3 6h15a3 3 0 010 6" />
+      <path d="M17 18h4L17 22" />
+      <path d="M21 18H6a3 3 0 010-6" />
     </>,
   ),
   'Study Everyday': createIcon(
     <>
-      <path d="M4.5 6.5a2 2 0 012-2h5.5v13.5L6.5 16a2 2 0 00-2 2V6.5z" />
-      <path d="M19.5 6.5a2 2 0 00-2-2H12v13.5L17.5 16a2 2 0 012 2V6.5z" />
+      {/* Open book */}
+      <path d="M2 6s2.5-2 5-2 5 2 5 2v14s-2.5-1.5-5-1.5S2 20 2 20V6z" />
+      <path d="M22 6s-2.5-2-5-2-5 2-5 2v14s2.5-1.5 5-1.5 5 1.5 5 1.5V6z" />
+      <path d="M12 6v14" />
+    </>,
+  ),
+  'Java Swing Tutor': createIcon(
+    <>
+      {/* Desktop monitor with code symbols */}
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <path d="M8 21h8M12 17v4" />
+      <path d="M8 9l-2 2 2 2M16 9l2 2-2 2M11 13l2-4" />
     </>,
   ),
   'Bank work': createIcon(
     <>
-      <path d="M3 9h18" />
-      <path d="M5 9V7l7-4 7 4v2" />
-      <path d="M6.5 9v8.5M11 9v8.5M17.5 9v8.5" />
-      <path d="M4 19h16" />
+      {/* Bank building — pediment + columns + base */}
+      <path d="M3 21h18" />
+      <path d="M3 10h18" />
+      <path d="M5 10v11M10 10v11M14 10v11M19 10v11" />
+      <path d="M3 10L12 3l9 7" />
     </>,
   ),
   'IoT work': createIcon(
     <>
-      <circle cx="7" cy="7" r="2.5" />
-      <circle cx="17" cy="5.5" r="2.5" />
-      <circle cx="7" cy="17" r="2.5" />
-      <circle cx="17" cy="18" r="2.5" />
-      <path d="M9.2 8.2l5.6 2.1M9.2 15.8l5.6-2.1M7 9.5v5" />
-      <path d="M17 8.5v6" />
-    </>,
-  ),
-  'Swing Teacher': createIcon(
-    <>
-      <rect x="4" y="5" width="16" height="11" rx="2" />
-      <path d="M8 19h8M12 16v3" />
-      <path d="M7 9h10M7 12h6" />
+      {/* Mesh of five connected nodes */}
+      <circle cx="12" cy="12" r="2" />
+      <circle cx="4.5" cy="4.5" r="2" />
+      <circle cx="19.5" cy="4.5" r="2" />
+      <circle cx="4.5" cy="19.5" r="2" />
+      <circle cx="19.5" cy="19.5" r="2" />
+      <path d="M6.2 6.2l4 4M17.8 6.2l-4 4M6.2 17.8l4-4M17.8 17.8l-4-4" />
     </>,
   ),
   'Schedule Editor': createIcon(
     <>
-      <rect x="3.5" y="5" width="17" height="15" rx="2" />
-      <path d="M8 3.5v3M16 3.5v3" />
-      <path d="M3.5 10h17" />
-      <path d="M8 13h3M13 13h3M8 17h3M13 17h3" />
+      {/* Calendar grid */}
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M8 2v4M16 2v4M3 9h18" />
+      <path d="M7 13h2M11 13h2M15 13h2M7 17h2M11 17h2M15 17h2" />
+    </>,
+  ),
+  'User Component React': createIcon(
+    <>
+      {/* Person silhouette + component add (+) */}
+      <circle cx="10" cy="8" r="4" />
+      <path d="M3 21v-1a7 7 0 0114 0v1" />
+      <path d="M19 8h4M21 6v4" />
+    </>,
+  ),
+  'Auth Component React': createIcon(
+    <>
+      {/* Padlock */}
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 018 0v4" />
+      <circle cx="12" cy="16" r="1" fill="currentColor" />
+      <path d="M12 17v1.5" />
     </>,
   ),
   'Rest Security': createIcon(
     <>
-      <path d="M12 3.5l7 3v5.5c0 4.2-3 8-7 9-4-1-7-4.8-7-9v-5.5l7-3z" />
+      {/* Shield with checkmark */}
+      <path d="M12 3L4 7v5c0 4.5 3.4 8.7 8 9.9 4.6-1.2 8-5.4 8-9.9V7l-8-4z" />
       <path d="M9 12l2 2 4-4" />
     </>,
   ),
 };
 
-const getProjectIcon = (name: string) => PROJECT_ICON_MAP[name] ?? DEFAULT_ICON;
+const getProjectIcon = (name: string) => PROJECT_ICON_MAP[name] ?? PROJECT_ICON_MAP['Rest Security'];
 
 export const ProjectsPage = () => {
   const projects = getAllProjects().sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0));
