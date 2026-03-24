@@ -2,17 +2,36 @@ import { ReactNode, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { getAllProjects } from '@/constants/projects';
 import { Card } from '@/components/Card';
-import { Project, ProjectCategory, ProjectStatus } from '@/types';
+import { Project, ProjectCategory, ProjectRole, ProjectStatus, ProjectTag } from '@/types';
 
-const CATEGORY_FILTERS = ['All', 'Fintech', 'Security', 'Learning', 'Enterprise', 'FamilyOps', 'IoT'] as const;
+const CATEGORY_FILTERS = ['All', 'Fintech', 'Security', 'Learning', 'Enterprise', 'FamilyOps', 'IoT', 'Open Source'] as const;
 type CategoryFilter = (typeof CATEGORY_FILTERS)[number];
+
 const STATUS_STYLES: Record<ProjectStatus, string> = {
-  Released: 'bg-emerald-400 text-slate-900',
-  'R&D': 'bg-amber-400 text-slate-900',
-  Community: 'bg-cyan-400 text-slate-900',
-  Beta: 'bg-purple-500 text-white',
-  'Open Source': 'bg-lime-400 text-slate-900'
+  'R&D':       'bg-amber-400 text-slate-900',
+  Beta:        'bg-purple-500 text-white',
+  Live:        'bg-emerald-400 text-slate-900',
+  Stable:      'bg-cyan-400 text-slate-900',
+  Archived:    'bg-slate-500 text-white',
+  Delivered:   'bg-violet-500 text-white',
 };
+
+const getLinkLabel = (link: string) =>
+  link.includes('github.com') ? 'View on GitHub' : 'Visit Website';
+
+const ExternalLinkIcon = ({ className }: { className?: string }) => (
+  <svg
+    className={className}
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.8}
+    viewBox="0 0 24 24"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15 3h6v6" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M10 14L21 3" />
+  </svg>
+);
 
 const createIcon = (children: ReactNode) => (
   <svg
@@ -108,7 +127,7 @@ const PROJECT_ICON_MAP: Record<string, ReactNode> = {
 const getProjectIcon = (name: string) => PROJECT_ICON_MAP[name] ?? DEFAULT_ICON;
 
 export const ProjectsPage = () => {
-  const projects = getAllProjects();
+  const projects = getAllProjects().sort((a, b) => (b.weight ?? 0) - (a.weight ?? 0));
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('All');
 
@@ -121,8 +140,14 @@ export const ProjectsPage = () => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedProject(null);
+    };
+    window.addEventListener('keydown', onKeyDown);
+
     return () => {
       document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
     };
   }, [selectedProject]);
 
@@ -198,72 +223,74 @@ export const ProjectsPage = () => {
                   >
                     {project.status}
                   </span>
+
                   {/* Project Icon */}
                   <div className="mb-4 relative">
                     <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-600/20 flex items-center justify-center border border-white/10 group-hover:border-violet-500/50 transition-colors">
                       {getProjectIcon(project.name)}
                     </div>
-                    {/* Glow effect on hover */}
                     <div className="absolute inset-0 bg-violet-500/0 group-hover:bg-violet-500/10 rounded-2xl blur-xl transition-all duration-300" />
                   </div>
 
-                  {/* Project Info */}
                   <h3 className="text-xl font-bold text-white mb-2 group-hover:text-gradient transition-all">
                     {project.name}
                   </h3>
+
                   <div className="flex-1 flex flex-col gap-3">
                     <p className="text-slate-400 text-sm leading-relaxed">{project.description}</p>
-                    {project.highlight && (
-                      <p className="text-slate-200/80 text-sm italic">{project.highlight}</p>
-                    )}
+
+
                     {project.tags && project.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag: string) => (
-                          <span
-                            key={`${project.name}-${tag}`}
-                            className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-slate-200 border border-white/10"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                          Tags
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag: ProjectTag) => (
+                            <span
+                              key={`${project.name}-${tag}`}
+                              className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-slate-200 border border-white/10"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     )}
+
                     {project.stack && project.stack.length > 0 && (
-                      <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                      {project.stack.slice(0, 4).map((tech: string) => (
-                          <span
-                            key={`${project.name}-${tech}`}
-                            className="px-2 py-1 rounded-md bg-slate-900/40 border border-white/5"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                          Stack
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {project.stack.slice(0, 4).map((tech: string) => (
+                            <span
+                              key={`${project.name}-${tech}`}
+                              className="px-2 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wide text-slate-400 bg-slate-900/40 border border-white/5"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     )}
+
                     {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs font-semibold uppercase tracking-wide text-violet-300 hover:text-violet-100 transition-colors mt-2 inline-flex items-center gap-1"
-                        onClick={(event) => event.stopPropagation()}
-                      >
-                        <svg
-                          className="-ml-0.5 h-4 w-4"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={1.6}
-                          viewBox="0 0 24 24"
+                      <div className="mt-auto pt-2">
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-violet-300 border border-violet-500/30 bg-violet-500/10 hover:bg-violet-500/20 hover:text-violet-100 hover:border-violet-400/50 transition-all"
+                          onClick={(event) => event.stopPropagation()}
                         >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17h10M11 7h7v7" />
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 3h7v7" />
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5" />
-                        </svg>
-                        View source
-                      </a>
+                          <ExternalLinkIcon className="h-3.5 w-3.5" />
+                          {getLinkLabel(project.link)}
+                        </a>
+                      </div>
                     )}
                   </div>
-
                 </Card>
               </motion.div>
             ))}
@@ -292,14 +319,19 @@ export const ProjectsPage = () => {
               className="relative w-full max-w-lg"
             >
               <Card className="flex flex-col gap-4" hover={false}>
+                {/* Modal header */}
                 <div className="flex items-center justify-between">
                   <h3 className="text-2xl font-bold text-white">{selectedProject.name}</h3>
                   <button
                     type="button"
                     onClick={handleClose}
-                    className="p-2 rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60"
+                    title="Close (Esc)"
+                    className="group/close flex items-center gap-1.5 pl-2 pr-1.5 py-1 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60"
                     aria-label="Close project details"
                   >
+                    <kbd className="hidden group-hover/close:inline-block text-[10px] font-mono text-slate-500 bg-white/5 border border-white/10 rounded px-1 py-0.5 leading-none">
+                      esc
+                    </kbd>
                     <svg
                       className="w-5 h-5"
                       fill="none"
@@ -312,92 +344,97 @@ export const ProjectsPage = () => {
                   </button>
                 </div>
 
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-600/20 flex items-center justify-center border border-white/10">
-                  {getProjectIcon(selectedProject.name)}
+                <div className="flex items-start gap-4">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-600/20 flex items-center justify-center border border-white/10 shrink-0">
+                    {getProjectIcon(selectedProject.name)}
                   </div>
-                <div className="flex-1 space-y-2">
-                  <div>
-                    <span
-                      className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${STATUS_STYLES[selectedProject.status]}`}
-                    >
-                      {selectedProject.status}
-                    </span>
-                  </div>
-                  <p className="text-slate-300 text-sm leading-relaxed">
-                    {selectedProject.description}
-                  </p>
-                  {selectedProject.highlight && (
-                    <p className="text-slate-100 text-sm italic">{selectedProject.highlight}</p>
-                  )}
-                  {selectedProject.tags && selectedProject.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      {selectedProject.tags.map((tag: string) => (
-                        <span
-                          key={`${selectedProject.name}-modal-${tag}`}
-                          className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-slate-100 border border-white/10"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  {selectedProject.stack && selectedProject.stack.length > 0 && (
-                    <div className="flex flex-wrap gap-2 pt-1 text-[11px] font-semibold uppercase tracking-wide text-slate-400">
-                      {selectedProject.stack.map((tech: string) => (
-                        <span
-                          key={`${selectedProject.name}-stack-${tech}`}
-                          className="px-2 py-1 rounded-md bg-slate-900/50 border border-white/5"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  {selectedProject.roles && selectedProject.roles.length > 0 && (
-                    <div className="flex flex-wrap items-center gap-2 pt-1">
-                      <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                        Role
-                      </span>
-                      {selectedProject.roles.map((role: string) => (
-                        <span
-                          key={`${selectedProject.name}-role-${role}`}
-                          className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-violet-500/15 text-violet-300 border border-violet-500/25"
-                        >
-                          {role}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                  {selectedProject.link && (
-                    <div className="pt-3">
-                      <a
-                        href={selectedProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-violet-300 hover:text-violet-100 transition-colors"
+                  <div className="flex-1 space-y-3">
+                    <div>
+                      <span
+                        className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${STATUS_STYLES[selectedProject.status]}`}
                       >
-                        <svg
-                          className="h-4 w-4"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth={1.6}
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M7 17h10M11 7h7v7" />
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 3h7v7" />
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 19L19 5" />
-                        </svg>
-                        View source code
-                      </a>
+                        {selectedProject.status}
+                      </span>
                     </div>
-                  )}
-                </div>
-                </div>
 
-                <div className="text-sm text-slate-400">
-                  More detailed case studies and technical breakdowns are coming soon. If you'd like to
-                  know specifics about this project, feel free to reach out via the contact page.
+                    <p className="text-slate-300 text-sm leading-relaxed">
+                      {selectedProject.description}
+                    </p>
+
+                    {selectedProject.body && (
+                      <p className="border-l-2 border-violet-500/40 pl-3 text-violet-100/80 text-sm italic leading-relaxed">
+                        {selectedProject.body}
+                      </p>
+                    )}
+
+                    {selectedProject.tags && selectedProject.tags.length > 0 && (
+                      <div className="space-y-1 pt-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                          Tags
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedProject.tags.map((tag: ProjectTag) => (
+                            <span
+                              key={`${selectedProject.name}-modal-${tag}`}
+                              className="px-3 py-1 rounded-full text-xs font-semibold bg-white/5 text-slate-100 border border-white/10"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedProject.stack && selectedProject.stack.length > 0 && (
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                          Stack
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedProject.stack.map((tech: string) => (
+                            <span
+                              key={`${selectedProject.name}-stack-${tech}`}
+                              className="px-2 py-1 rounded-md text-[11px] font-semibold uppercase tracking-wide text-slate-400 bg-slate-900/50 border border-white/5"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedProject.roles && selectedProject.roles.length > 0 && (
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500">
+                          Role
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedProject.roles.map((role: ProjectRole) => (
+                            <span
+                              key={`${selectedProject.name}-role-${role}`}
+                              className="px-2 py-0.5 rounded-md text-[11px] font-semibold bg-violet-500/15 text-violet-300 border border-violet-500/25"
+                            >
+                              {role}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {selectedProject.link && (
+                      <div className="pt-2">
+                        <a
+                          href={selectedProject.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold text-violet-300 border border-violet-500/30 bg-violet-500/10 hover:bg-violet-500/20 hover:text-violet-100 hover:border-violet-400/50 transition-all"
+                        >
+                          <ExternalLinkIcon className="h-4 w-4" />
+                          {getLinkLabel(selectedProject.link)}
+                        </a>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Card>
             </motion.div>
@@ -407,4 +444,3 @@ export const ProjectsPage = () => {
     </div>
   );
 };
-

@@ -1,28 +1,55 @@
 // Project types
 export type ProjectCategory = 'Fintech' | 'Security' | 'Learning' | 'Enterprise' | 'IoT' | 'FamilyOps' | 'Open Source';
-export type ProjectStatus =
-  | 'Released'
-  | 'R&D'
-  | 'Community'
-  | 'Beta'
-  | 'Open Source';
+export type ProjectStatus = 'R&D' | 'Beta' | 'Live' | 'Stable' | 'Archived' | 'Delivered';
+
+export type ProjectTag =
+  | 'Fintech'
+  | 'Automation'
+  | 'FamilyOps'
+  | 'Learning'
+  | 'Productivity'
+  | 'Notifications'
+  | 'Libraries'
+  | 'Finance'
+  | 'APIs'
+  | 'Knowledge'
+  | 'Open Source'
+  | 'Education'
+  | 'Desktop'
+  | 'Java'
+  | 'Enterprise'
+  | 'Banking'
+  | 'IoT'
+  | 'Team Leadership'
+  | 'Planning'
+  | 'React'
+  | 'Auth'
+  | 'Security'
+  | 'OSS';
+
+export type ProjectRole =
+  | 'Creator'
+  | 'Developer'
+  | 'Maintainer'
+  | 'Senior Full Stack Developer'
+  | 'Head of Server Software'
+  | 'Lead Developer';
 
 export interface Project {
   name: string;
   description: string;
   categories: ProjectCategory[];
   status: ProjectStatus;
-  summary?: string;
-  highlight?: string;
-  tags?: string[];
+  body?: string;
+  tags?: ProjectTag[];
   stack?: string[];
-  roles?: string[];
+  roles?: ProjectRole[];
   featured?: boolean;
   weight?: number;
-  publishedAt?: string;
+  from?: string;
+  to?: string | 'now';
   slug?: string;
   link?: string;
-  body?: string;
 }
 
 export interface ProjectData {
