@@ -1,4 +1,31 @@
 apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-to-https
+  namespace: website
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: posadskiy-website-http
+  namespace: website
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`posadskiy.com`) || Host(`www.posadskiy.com`)
+      kind: Rule
+      middlewares:
+        - name: redirect-to-https
+      services:
+        - name: posadskiy-website
+          port: 3000
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: posadskiy-website
