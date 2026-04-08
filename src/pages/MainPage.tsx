@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion';
+import { useOutletContext } from 'react-router-dom';
 import { ProjectsPage } from './ProjectsPage';
 import { ServicesPage } from './ServicesPage';
 import { ContactPage } from './ContactPage';
+import type { AppOutletContext } from '@/types/outlet';
 
-interface MainPageProps {
-  setLoading: (loading: boolean) => void;
-}
-
-export const MainPage = ({ setLoading }: MainPageProps) => {
+export const MainPage = () => {
+  const { setLoading } = useOutletContext<AppOutletContext>();
   return (
     <div className="bg-slate-950 text-white">
       <section className="min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden py-12">
