@@ -18,7 +18,6 @@ if [ $# -lt 1 ]; then
 fi
 
 VERSION=$1
-TAG_DATE=$(date +%Y%m%d%H%M%S)
 
 BUILD_ARGS=()
 if [ -n "${VITE_WEB3FORMS_ACCESS_KEY:-}" ]; then
@@ -43,7 +42,6 @@ docker buildx build --platform linux/arm64 \
   "${BUILD_ARGS[@]}" \
   -f "$REPO_ROOT/Dockerfile.prod" \
   -t "$DOCKERHUB_USERNAME/$SERVICE_NAME:$VERSION" \
-  -t "$DOCKERHUB_USERNAME/$SERVICE_NAME:$TAG_DATE" \
   -t "$DOCKERHUB_USERNAME/$SERVICE_NAME:latest" \
   "$REPO_ROOT" --push
 
